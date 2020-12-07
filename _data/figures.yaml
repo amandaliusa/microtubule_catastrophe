@@ -1,43 +1,191 @@
 - fig:
-  title: "Fig. 1: ECDFs of Times to Catastrophe for Labeled vs Unlabeled Tubulin"
+  title: "Fig. 1: ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals"
   filename: script1.py
-  desc:  ECDFs of Times to Catastrophe for Labeled vs Unlabeled Tubulin
-  pic: 2.2_ecdfs.png
+  desc: 
+      ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
+  pic: 
   req:
+    - ds:
+      title: Kombucha tempura desconstructed measures
+      storage: local 
+      link: 6.1_ecdf_unlabeled_labeled.png
     - ds: 
       storage: remote
       title: Dataset 1
       link: "http://data.caltech.edu"
 
 - fig:
-  title: "Fig. 2: Activated charcoal tilde kombucha. "
+  title: "Fig. 2: Analytical CDF vs ECDF for Simulated Times to Catastrophe"
   filename: script2.py
   desc: 
-      Used to generate Figure 2, illustrating activated kombucha on tap.
-  pic: fig2.png
+      Analytical CDF vs ECDF for Simulated Times to Catastrophe
+  pic: 
   req:
     - ds:
       title: Kombucha tempura desconstructed measures
       storage: local 
-      link: dataset2.csv
+      link: 6.1_ecdf_model2_vs_data.png
     - ds: 
-      storage: local
-      title: Gravitational wave lo-fi beats to chill and study to
-      link: dataset2.csv
-
-- fig: 
-  title: "Fig. 5: Sustainable pour-over VHS"
-  filename: script1.py
-  desc:
-        Used to generate Figure 5, 
-  pic: fig3.png
+      storage: remote
+      title: Dataset 1
+      link: "http://data.caltech.edu"
+      
+- fig:
+  title: "Fig. 3: ECDFs for TIme to Catastrohpe for Different Beta2/Beta1"
+  filename: script3.py
+  desc: 
+      ECDFs for Time to Catastrohpe for Different Beta2/Beta1
+  pic: 
   req:
     - ds:
-      title: Summarized dataset 1
-      storage: local
-      link: dataset1.csv
-
-    - ds:
-      title: Summarized dataset 2
+      title: Kombucha tempura desconstructed measures
+      storage: local 
+      link: 5.2_ecdf_diff_b2_b1_ratios.png
+    - ds: 
       storage: remote
-      link: "http://zenodo.org" 
+      title: Dataset 1
+      link: "http://data.caltech.edu"
+      
+- fig:
+  title: "Fig. 4: Confidence Intervals of Beta Rates for both the Gamma and Custom Model"
+  filename: script4.py
+  desc: 
+      Confidence Intervals of Beta Rates for both the Gamma and Custom Model
+  pic: 
+  req:
+    - ds:
+      title: Kombucha tempura desconstructed measures
+      storage: local 
+      link: 8.2_beta_conf_int_comparison.png
+    - ds: 
+      storage: remote
+      title: Dataset 1
+      link: "http://data.caltech.edu"
+      
+- fig:
+  title: "Fig. 5: Gamma Model QQ Plot"
+  filename: script5.py
+  desc: 
+      Gamma Model QQ Plot
+  pic: 
+  req:
+    - ds:
+      title: Kombucha tempura desconstructed measures
+      storage: local 
+      link: 9.1_gamma_model_QQ_plot.PNG
+    - ds: 
+      storage: remote
+      title: Dataset 1
+      link: "http://data.caltech.edu"
+
+- fig:
+  title: "Fig. 6: Custom Model QQ Plot"
+  filename: script6.py
+  desc: 
+      Custom Model QQ Plot
+  pic: 
+  req:
+    - ds:
+      title: Kombucha tempura desconstructed measures
+      storage: local 
+      link: 9.1_custom_model_QQ_plot.PNG
+    - ds: 
+      storage: remote
+      title: Dataset 1
+      link: "http://data.caltech.edu"
+      
+- fig:
+  title: "Fig. 7: Gamma Model Predictive ECDF"
+  filename: script7.py
+  desc: 
+      ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
+  pic: 
+  req:
+    - ds:
+      title: Kombucha tempura desconstructed measures
+      storage: local 
+      link: 9.1_custom_model_predictive_ecdf.png
+    - ds: 
+      storage: remote
+      title: Dataset 1
+      link: "http://data.caltech.edu"
+      
+- fig:
+  title: "Fig. 8: Gamma Model Predictive ECDF"
+  filename: script8.py
+  desc: 
+      ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
+  pic: 
+  req:
+    - ds:
+      title: Kombucha tempura desconstructed measures
+      storage: local 
+      link: 9.1_gamma_model_predictive_ecdf.png
+    - ds: 
+      storage: remote
+      title: Dataset 1
+      link: "http://data.caltech.edu"
+      
+- fig:
+  title: "Fig. 9: Gamma Model Predictive ECDF Differences"
+  filename: script9.py
+  desc: 
+      ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
+  pic: 
+  req:
+    - ds:
+      title: Kombucha tempura desconstructed measures
+      storage: local 
+      link: 9.1_custom_model_predictive_ecdf_diff.png
+    - ds: 
+      storage: remote
+      title: Dataset 1
+      link: "http://data.caltech.edu"
+      
+- fig:
+  title: "Fig. 10: Gamma Model Predictive ECDF"
+  filename: script10.py
+  desc: 
+      ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
+  pic: 
+  req:
+    - ds:
+      title: Kombucha tempura desconstructed measures
+      storage: local 
+      link: 9.1_gamma_model_predictive_ecdf_diff.png
+    - ds: 
+      storage: remote
+      title: Dataset 1
+      link: "http://data.caltech.edu"
+      
+- fig:
+  title: "Fig. 11: Gamma Model Alpha Parameter Confidence Intervals"
+  filename: script11.py
+  desc: 
+      ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
+  pic: 
+  req:
+    - ds:
+      title: Kombucha tempura desconstructed measures
+      storage: local 
+      link: 9.1_alpha_conf_int.png
+    - ds: 
+      storage: remote
+      title: Dataset 1
+      link: "http://data.caltech.edu"
+      
+- fig:
+  title: "Fig. 12: Gamma Model Beta Parameter Confidence Intervals"
+  filename: script12.py
+  desc: 
+      ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
+  pic: 
+  req:
+    - ds:
+      title: Kombucha tempura desconstructed measures
+      storage: local 
+      link: 9.1_beta_conf_int.png
+    - ds: 
+      storage: remote
+      title: Dataset 1
+      link: "http://data.caltech.edu"

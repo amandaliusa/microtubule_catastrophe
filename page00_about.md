@@ -30,6 +30,17 @@ sidebar: true
 </center>
 {% endif %}
 
+{% if entry[0] != 'fig2.2' %}
+## {{entry[0]}}
+{% endif %}
+
+{% if entry[0] == 'fig2.2' %}
+
+<center>
+    <img src="assets/img/2.2_ecdfs.png" alt="ECDFs of Times to Catastrophe for Labeled vs Unlabeled Tubulin" width="500" height="400"/>
+</center>
+{% endif %}
+
 {{entry[1]}}
 
 {% endif %}
