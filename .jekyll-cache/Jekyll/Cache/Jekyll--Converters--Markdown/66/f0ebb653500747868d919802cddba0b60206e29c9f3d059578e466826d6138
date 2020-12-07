@@ -1,0 +1,16 @@
+I"�<hr />
+
+<h1 id="microtubule-catastrophe">Microtubule Catastrophe</h1>
+
+<p>Cindy Cao, Amanda Li, Maggie Sui</p>
+
+<h2 id="abstract">Abstract</h2>
+<p>Microtubule catastrophe is an important cellular event that allows rapid reorganization of cellular structure. Tubulin monomers that make up microtubules dissociate rapidly in sudden events termed “catastrophe”. These events are crucial for microtubule function. Despite the importance of microtubule catastrophe, the exact mechanism by which catastrophe occurs is not well understood. To gain an understanding of the mechanism, we used data collected from <a href="https://www.cell.com/cell/fulltext/S0092-8674(11)01287-6?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867411012876%3Fshowall%3Dtrue">Garner et. al</a> to model microtubule catastrophe in two distinct models. The first model is a gamma distribution model that assumes that microtubule catastrophe can be modeled as N poisson processes with the same rate of arrival; whereas our second model assumes microtubule catastrophe can be modeled as 2 successive poisson processes with different rates of arrival. We found that microtubule catastrophe is best modeled as a gamma distribution with rate parameter \(\beta \approx\) steps / second and increasing step parameter \(\alpha\) for increasing tubulin concentration. This suggests that at higher tubulin concentrations, more steps of the same rate are required for microtubule catastrophe to occur; that is, microtubule catastrophe takes longer at higher tubulin concentrations.</p>
+
+<h2 id="summary">Summary</h2>
+<p>A short summary of your work goes here. Think “significance statement”. Nisi bushwick seitan et authentic aute, laboris blog sed in wayfarers lyft plaid ut. Id aesthetic venmo, palo santo aliqua photo booth blue bottle. Meditation non copper mug lomo glossier kombucha. Cred laboris meditation poke sriracha street art letterpress food truck master cleanse adipisicing. Hashtag affogato chambray vaporware subway tile, kogi helvetica ea tacos sint brooklyn. Williamsburg waistcoat raclette seitan glossier messenger bag dolore ramps, flannel magna nisi hot chicken elit pariatur kale chips.</p>
+
+<h2 id="acknowledgments">Acknowledgments</h2>
+<p>We thank Garner et. a</p>
+
+:ET
