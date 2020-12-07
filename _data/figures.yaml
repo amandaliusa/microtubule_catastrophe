@@ -1,8 +1,8 @@
 - fig:
-  title: "Fig. 1: Paleo cardigan kombucha, pickled brunch shabby chic "
+  title: "Fig. 1: ECDFs of Times to Catastrophe for Labeled vs Unlabeled Tubulin"
   filename: script1.py
-  desc:  Used to generate the figure1
-  pic: fig1.png
+  desc:  ECDFs of Times to Catastrophe for Labeled vs Unlabeled Tubulin
+  pic: 2.2_ecdfs.png
   req:
     - ds: 
       storage: remote

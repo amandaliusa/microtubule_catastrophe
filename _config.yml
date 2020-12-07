@@ -9,8 +9,10 @@ url: "" # Base of your website.In most cases, this will be left blank
 
 # You can include social icons
 site-twitter: #if your site has a twitter account, enter it here
-social-github: https://github.com/amandaliusa/microtubule_catastrophe # add your Github handle here.
-social-email: #username@hostname.com
+social-github: # add your Github handle here.
+social-email: amandali@caltech.edu #username@hostname.com
+social-email: msui@caltech.edu #username@hostname.com
+social-email: scao@caltech.edu #username@hostname.com
 
 # If you are using google analytics to track website traffic, you can insert the
 # tracking key below. It will be automatically inserted into the header of every
@@ -19,7 +21,7 @@ social-email: #username@hostname.com
 
 # You can include a logo for your work as a .png that is saved in the folder 
 # 'assets/img/'. If you want a logo to show up, put the filename of the logo here
-author-img: #logo.png # Comment this line out if you don't want a logo
+#author-img: logo.png # Comment this line out if you don't want a logo
 
 
 # Build settings for the website. Do not modify this unless you know what you
