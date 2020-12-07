@@ -154,14 +154,18 @@
 <p>Amanda Li, Maggie Sui, Cindy Cao</p>
 
 <h2 id="abstract">Abstract</h2>
+
 <p>Microtubule catastrophe is an important cellular event that allows rapid reorganization of cellular structure. Tubulin monomers that make up microtubules dissociate rapidly in sudden events termed “catastrophe”. These events are crucial for microtubule function. Despite the importance of microtubule catastrophe, the exact mechanism by which catastrophe occurs is not well understood. To gain an understanding of the mechanism, we used data collected from <a href="https://www.cell.com/cell/fulltext/S0092-8674(11)01287-6?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867411012876%3Fshowall%3Dtrue">Garner et. al</a> to model microtubule catastrophe in two distinct models. The first model is a gamma distribution model that assumes that microtubule catastrophe can be modeled as N poisson processes with the same rate of arrival; whereas our second model assumes microtubule catastrophe can be modeled as 2 successive poisson processes with different rates of arrival. We found that microtubule catastrophe is best modeled as a gamma distribution with rate parameter \(\beta \approx\) steps / second and increasing step parameter \(\alpha\) for increasing tubulin concentration. This suggests that at higher tubulin concentrations, more steps of the same rate are required for microtubule catastrophe to occur; that is, microtubule catastrophe takes longer at higher tubulin concentrations.</p>
 
 <h2 id="microtubule-catastrophe-and-ecdfs">Microtubule Catastrophe and ECDFs</h2>
+
 <p>Garner et. al used fluorescent markers to monitor microtubules in order to measure time to catastrophe. As a control to ensure that fluorescent labeling did not affect catastrophe times, they also performed a similar experiment using differential interference contrast (DIC) microscopy. The first dataset we worked with includes measured times to microtubule catastrophe for both labeled and unlabeled tubulin. We first visualized the ECDFs of the data:</p>
 
 <center>
     <img src="assets/img/2.2_ecdfs.png" alt="ECDFs of Times to Catastrophe for Labeled vs Unlabeled Tubulin" width="500" height="400" />
 </center>
+
+<p>We observe that there is no obvious difference between the ECDFs for labeled and unlabeled tubulin.</p>
 
 <h2 id="confidence-intervals-for-microtubule-catastrophe">Confidence Intervals for Microtubule Catastrophe</h2>
 
@@ -174,6 +178,7 @@
 <h2 id="summary">Summary</h2>
 
 <h2 id="acknowledgments">Acknowledgments</h2>
+
 <p>This work was done for BE/Bi103a 2020 at Caltech. We thank <a href="https://www.cell.com/cell/fulltext/S0092-8674(11)01287-6?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867411012876%3Fshowall%3Dtrue">Garner et. al</a> for their data, <a href="https://github.com/gchure/">Griffin Chure</a> for this website template, and Justin Bois and the <a href="https://bebi103a.github.io/index.html">BE/Bi103a</a> staff for making this course possible.</p>
 
 
