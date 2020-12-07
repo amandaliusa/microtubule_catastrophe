@@ -26,8 +26,9 @@ sidebar: true
 
 {% if entry[0] == 'fig2.2' %}
 
-![ECDFs of Times to Catastrope for Labeled vs Unlabeled Tubulin](assets/img/2.2_ecdfs.png "ECDFs")
-
+<center>
+    <img src="assets/img/2.2_ecdfs.png" alt="ECDFs of Times to Catastrophe for Labeled vs Unlabeled Tubulin" width="500" height="400"/>
+</center>
 {% endif %}
 
 {% endif %}
