@@ -19,22 +19,14 @@ sidebar: true
 {% if entry[0] != 'title' %}
 {% if entry[0] != 'authors' %}
 
-{% if entry[0] != 'fig' %}
+{% if entry[0] != 'fig2.2' %}
 ## {{entry[0]}}
 {{entry[1]}}
 {% endif %}
 
-{% if entry[0] == 'fig' %}
+{% if entry[0] == 'fig2.2' %}
 
-{% for fig in site.data.figures %}
-
-{% if fig.pic == '2.2_ecdfs.png' %}
-
-![fig.desc](fig.pic "ECDFs")
-
-{% endif %}
-
-{% endfor %}
+![ECDFs of Times to Catastrope for Labeled vs Unlabeled Tubulin](assets/img/2.2_ecdfs.png "ECDFs")
 
 {% endif %}
 
