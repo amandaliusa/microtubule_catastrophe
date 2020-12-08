@@ -1,7 +1,7 @@
 ---
 layout: page
-title: Home
-description: Microtubule Catastrophe
+title: Microtubule Catastrophe
+description: #Microtubule Catastrophe
 img: #about.png # Add image post (optional)
 caption: #"A Serious Man (2010)"
 permalink: index.html
