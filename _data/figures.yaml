@@ -31,7 +31,7 @@
       link: "http://data.caltech.edu"
       
 - fig:
-  title: "Fig. 3: ECDFs for TIme to Catastrohpe for Different Beta2/Beta1"
+  title: "Fig. 3: ECDFs for Time to Catastrohpe for Different Beta2/Beta1"
   filename: script3.py
   desc: 
       ECDFs for Time to Catastrohpe for Different Beta2/Beta1

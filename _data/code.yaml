@@ -1,11 +1,57 @@
 - script:
-  name: script1.py
+  name: fig1.py
   desc: >
-    Super fancy script which calcualate some complicated stuff with
-    well-documented code.
+    Calculates and creates ECDF of Times to Catastrophe for Labeled vs 
+    Unlabeled Tubulin with Confidence Intervals
 - script:
-  name: script2.py
+  name: fig2.py
   desc: >
     Yet another script that does something-or-other.
+- script:
+  name: fig3.py
+  desc: >
+    Calculates and creates ECDF of Times to Catastrophe for Labeled vs 
+    Unlabeled Tubulin with Confidence Intervals
+- script:
+  name: fig4.py
+  desc: >
+    Yet another script that does something-or-other.
+- script:
+  name: fig5.py
+  desc: >
+    Calculates and creates ECDF of Times to Catastrophe for Labeled vs 
+    Unlabeled Tubulin with Confidence Intervals
+- script:
+  name: fig6.py
+  desc: >
+    Yet another script that does something-or-other.
+- script:
+  name: fig7.py
+  desc: >
+    Calculates and creates ECDF of Times to Catastrophe for Labeled vs 
+    Unlabeled Tubulin with Confidence Intervals
+- script:
+  name: fig8.py
+  desc: >
+    Yet another script that does something-or-other.
+- script:
+  name: fig9.py
+  desc: >
+    Calculates and creates ECDF of Times to Catastrophe for Labeled vs 
+    Unlabeled Tubulin with Confidence Intervals
+- script:
+  name: fig10.py
+  desc: >
+    Yet another script that does something-or-other.
+- script:
+  name: fig12.py
+  desc: >
+    Calculates and creates ECDF of Times to Catastrophe for Labeled vs 
+    Unlabeled Tubulin with Confidence Intervals
+- script:
+  name: fig12.py
+  desc: >
+    Yet another script that does something-or-other.
+    
 
 
