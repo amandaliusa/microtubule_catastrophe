@@ -89,19 +89,10 @@ and entry[0] != 'fig9.1f' and entry[0] != 'fig9.1g' and entry[0] != 'fig9.1h'%}
 {% endif %}
 
 {% if entry[0] == 'fig9.1e' %}
-
-
-<div class="imageContainer" style="text-align:center;">
-    <div style="margin-left: auto;float:left;margin-right:5px;">
-        <img src="assets/img/9.1_custom_model_QQ_plot.png" height="400" width="500"  />
-        <figcaption style="text-align:center;"> QQ Plot, Custom Model </figcaption>
-    </div>
-    <div style="float:left;margin-right:5px;">
-        <img src="assets/img/9.1_gamma_QQ_plot.png" height="400" width="500" />
-        <figcaption style="text-align:center;"> QQ Plot, Gamma Model </figcaption>
-    </div>
-</div>
-
+<center>
+    <img src="assets/img/9.1_custom_model_QQ_plot.png" alt="Custom Model QQ Plot" width="500" height="400"/>
+    <figcaption> QQ Plot, Custom Model </figcaption>
+</center>
 {% endif %}
 
 {% if entry[0] == 'fig9.1f' %}
@@ -115,6 +106,13 @@ and entry[0] != 'fig9.1f' and entry[0] != 'fig9.1g' and entry[0] != 'fig9.1h'%}
 <center>
     <img src="assets/img/9.1_gamma_model_predictive_ecdf.png" alt="Gamma Model Predictive ECDF" width="500" height="400"/>
     <figcaption> Predictive ECDFs, Gamma Model </figcaption>
+</center>
+{% endif %}
+
+{% if entry[0] == 'fig9.1h' %}
+<center>
+    <img src="assets/img/9.1_gamma_QQ_plot.png" alt="Gamma Model QQ Plot" width="500" height="400"/>
+    <figcaption> QQ Plot, Gamma Model </figcaption>
 </center>
 {% endif %}
 
