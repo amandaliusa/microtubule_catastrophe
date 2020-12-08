@@ -162,18 +162,77 @@
 <p>Garner et. al used fluorescent markers to monitor microtubules in order to measure time to catastrophe. As a control to ensure that fluorescent labeling did not affect catastrophe times, they also performed a similar experiment using differential interference contrast (DIC) microscopy. The first dataset we worked with includes measured times to microtubule catastrophe for both labeled and unlabeled tubulin. We first visualized the ECDFs of the data:</p>
 
 <center>
-    <img src="assets/img/2.2_ecdfs.png" alt="ECDFs of Times to Catastrophe for Labeled vs Unlabeled Tubulin" width="500" height="400" />
+    <img src="assets/img/2.2_ecdfs.png" width="500" height="400" />
+    <figcaption> ECDFs of Time to Catastrophe for Labeled vs Unlabeled Tubulin </figcaption>
 </center>
 
 <p>We observe that there is no obvious difference between the ECDFs for labeled and unlabeled tubulin.</p>
 
 <h2 id="confidence-intervals-for-microtubule-catastrophe">Confidence Intervals for Microtubule Catastrophe</h2>
 
+<center>
+    <img src="assets/img/6.1_ecdf_unlabeled_labeled.png" width="500" height="400" />
+    <figcaption> ECDF of Time to Catastrophe for Labeled vs Unlabeled Tubulin, with Confidence Intervals </figcaption>
+</center>
+
+<p>We observe that there is no obvious difference between the ECDFs for labeled and unlabeled tubulin and confirm that the 95% confidence intervals of the times to catastrophe for labeled and unlabeled tubulin overlap.</p>
+
 <h2 id="simulating-distributions">Simulating Distributions</h2>
+
+<center>
+    <img src="assets/img/5.2_ecdf_diff_b2_b1_ratios.png" width="500" height="400" />
+    <figcaption> ECDFs of Time to Catastrophe with Different b2/b1 ratios </figcaption>
+</center>
+
+<center>
+    <img src="assets/img/5.2_ecdf_model2_vs_data.png" width="500" height="400" />
+    <figcaption> Analytical vs Simulated ECDF of Time to Catastrophe </figcaption>
+</center>
 
 <h2 id="mles-of-microtubule-catastrophe-model">MLEs of Microtubule Catastrophe Model</h2>
 
-<h2 id="further-analysis">Further Analysis</h2>
+<center>
+    <img src="assets/img/8.2_beta_conf_int_comparison.png" width="500" height="400" />
+    <figcaption> Confidence Intervals for Rates, Both Models </figcaption>
+</center>
+
+<h2 id="model-comparison-and-further-analysis">Model Comparison and Further Analysis</h2>
+
+<div class="imageContainer" style="text-align:center;">
+    <div style="margin-left: auto;float:left;margin-right:5px;">
+        <img src="assets/img/9.1_custom_model_QQ_plot.png" height="400" width="500" />
+        <figcaption style="text-align:center;"> QQ Plot, Custom Model </figcaption>
+    </div>
+    <div style="float:left;margin-right:5px;">
+        <img src="assets/img/9.1_gamma_QQ_plot.png" height="400" width="500" />
+        <figcaption style="text-align:center;"> QQ Plot, Gamma Model </figcaption>
+    </div>
+</div>
+
+<center>
+    <img src="assets/img/9.1_custom_model_predictive_ecdf.png" alt="Custom Model Predictive ECDF" width="500" height="400" />
+    <figcaption> Predictive ECDFs, Custom Model </figcaption>
+</center>
+
+<center>
+    <img src="assets/img/9.1_gamma_model_predictive_ecdf_diff.png" alt="Gamma Model Predictive ECDF Difference" width="500" height="400" />
+    <figcaption> Predictive ECDF Difference, Gamma Model </figcaption>
+</center>
+
+<center>
+    <img src="assets/img/9.1_custom_model_predictive_ecdf_diff.png" alt="Custom Model Predictive ECDF Difference" width="500" height="400" />
+    <figcaption> Predictive ECDF Differences, Custom Model </figcaption>
+</center>
+
+<center>
+    <img src="assets/img/9.1_alpha_conf_int.png" width="500" height="400" />
+    <figcaption> Confidence Intervals for Alpha at Different Concentrations, Gamma Model </figcaption>
+</center>
+
+<center>
+    <img src="assets/img/9.1_beta_conf_int.png" alt="Beta Confidence Interval" width="500" height="400" />
+    <figcaption> Confidence Intervals for Beta at Different Concentrations, Gamma Model </figcaption>
+</center>
 
 <h2 id="summary">Summary</h2>
 

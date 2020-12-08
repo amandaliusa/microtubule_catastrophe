@@ -930,6 +930,16 @@ table tfoot td {
   clear: both;
 }
 
+.imageContainer {
+    display:inline-block;
+}
+
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 /* - - - - - - - - - - Home Page Styles - - - - - - - - - - */
 .sidebar {
   display: -webkit-box;
