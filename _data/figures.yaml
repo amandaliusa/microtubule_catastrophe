@@ -3,44 +3,40 @@
   filename: script1.py
   desc: 
       ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
-  pic: 
+  pic: 6.1_ecdf_unlabeled_labeled.png
   req:
-    - ds:
-      title: Kombucha tempura desconstructed measures
-      storage: local 
-      link: 6.1_ecdf_unlabeled_labeled.png
     - ds: 
       storage: remote
-      title: Dataset 1
-      link: "http://data.caltech.edu"
+      title: Time to catastrophe
+      link: https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_time_to_catastrophe_dic_tidy.csv
 
 - fig:
   title: "Fig. 2: Analytical CDF vs ECDF for Simulated Times to Catastrophe"
   filename: script2.py
   desc: 
       Analytical CDF vs ECDF for Simulated Times to Catastrophe
-  pic: 
+  pic: 6.1_ecdf_model2_vs_data.png
   req:
     - ds:
       title: Kombucha tempura desconstructed measures
       storage: local 
-      link: 6.1_ecdf_model2_vs_data.png
+      link: 
     - ds: 
       storage: remote
-      title: Dataset 1
-      link: "http://data.caltech.edu"
+      title: Time to catastrophe
+      link: https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_time_to_catastrophe_dic_tidy.csv
       
 - fig:
   title: "Fig. 3: ECDFs for Time to Catastrohpe for Different Beta2/Beta1"
   filename: script3.py
   desc: 
       ECDFs for Time to Catastrohpe for Different Beta2/Beta1
-  pic: 
+  pic: 5.2_ecdf_diff_b2_b1_ratios.png
   req:
     - ds:
       title: Kombucha tempura desconstructed measures
       storage: local 
-      link: 5.2_ecdf_diff_b2_b1_ratios.png
+      link: 
     - ds: 
       storage: remote
       title: Dataset 1
