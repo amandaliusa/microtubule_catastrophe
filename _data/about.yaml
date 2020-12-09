@@ -103,8 +103,7 @@ fig12: >
     There does not appear to be a significant difference between the rates $\beta$ as tubulin concentration increases; the confidence intervals for all concentrations overlap a lot. So for higher concentrations, the ratio $\alpha / \beta$ is generally larger, meaning time to catastrophe takes longer. 
 
 Summary:  >
-    We confirmed that GFP fluorescent tagged microtubule does not significantly impact the rate to catastrophe and thus we can measure microtubule catastrophe with GFP labeling. Then, we compared two models for microtubule distribution and found that time between microtubule catastrophe events can be best modeled as a gamma distribution. In addition, as the concentration of tubulin increases, the number of events between microtubule catastrophes increase as well, though all events still occur at the approximately the same rate. 
-
+    We confirmed that GFP fluorescent tagged microtubule does not significantly impact the rate to catastrophe and thus we can measure microtubule catastrophe with GFP labeling. Then, we compared two models for microtubule distribution and found that time between microtubule catastrophe events can be best modeled as a gamma distribution. In addition, as the concentration of tubulin increases, the number of events between microtubule catastrophes increase as well, though all events still occur at the approximately the same rate. The Github repo for this site can be found [here](https://github.com/amandaliusa/microtubule_catastrophe).
   
 Acknowledgments: > 
   This work was done for BE/Bi103a 2020 at Caltech. We thank [Garner et. al](https://www.cell.com/cell/fulltext/S0092-8674(11)01287-6?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867411012876%3Fshowall%3Dtrue) for their data, [Griffin Chure](https://github.com/gchure/) for this website template, and Justin Bois and the [BE/Bi103a](https://bebi103a.github.io/index.html) staff for making this course possible. 
