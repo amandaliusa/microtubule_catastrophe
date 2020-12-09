@@ -140,3 +140,52 @@ def theor_cdf_custom(beta1, beta2, t):
     second_term = (1 / beta1 * (1 - np.exp(-beta1 * t)) - 1 / beta2 * (1 - np.exp(-beta2 * t)))
     
     return first_term * second_term
+
+def compute_AIC(data, x0_gamma, x0_custom):
+    '''Computes AIC and Akaike weights for model comparison between 
+    Gamma and custom models
+    
+    Arguments:
+    data: observed measurements of time to catastrophe
+    x0_gamma: initial guesses for optimization for Gamma MLEs
+    x0_custom: initial guesses for optimization for Custom MLEs
+    
+    Returns:
+    df_mle: dataframe containing MLEs, AIC and loglikelihood values, and 
+    Akaike weights for both models
+    '''
+    
+    # Gamma MLE
+    alpha, beta = mle_iid_gamma(data, x0_gamma)
+
+    # Custom MLE
+    beta1, beta2 = mle_iid_model(data, x0_custom)
+
+    # Store results in data frame
+    df_mle = pd.DataFrame([alpha, beta, beta1, beta2], index=['alpha', 'beta', 'beta1', 'beta2'], columns=['parameters'])
+    
+    # Gamma model
+    gamma_time_to_catas = log_like_iid_gamma(df_mle.loc[["alpha", "beta"]].values, data)
+    df_mle.loc["log_like_gamma"] = gamma_time_to_catas
+
+    # Custom model
+    model_time_to_catas = log_like_iid_model(
+        df_mle.loc[["beta1", 'beta2']].values,
+        data,
+    )
+    df_mle.loc["log_like_custom"] = model_time_to_catas
+    
+    df_mle.loc['AIC_gamma'] = -2 * (df_mle.loc['log_like_gamma'] - 2)
+    df_mle.loc['AIC_custom'] = -2 * (df_mle.loc['log_like_custom'] - 2)
+
+    # weight for Gamma model
+    AIC_max = max(df_mle.loc[['AIC_gamma', 'AIC_custom']]['parameters'])
+    numerator = np.exp(-(df_mle.loc['AIC_gamma'] - AIC_max)/2)
+    denominator = numerator + np.exp(-(df_mle.loc['AIC_custom'] - AIC_max)/2)
+    df_mle.loc['w_gamma'] = numerator / denominator
+
+    # weight for custom model (weights should add to 1)
+    numerator = np.exp(-(df_mle.loc['AIC_custom'] - AIC_max)/2)
+    df_mle.loc['w_custom'] = numerator / denominator
+
+    return df_mle

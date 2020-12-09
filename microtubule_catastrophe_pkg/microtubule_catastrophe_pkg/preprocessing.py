@@ -3,7 +3,7 @@ import pandas as pd
 
 import bebi103 
 
-def process_labeled_unlabeled(filename):
+def process_labeled_unlabeled_data(filename):
     '''Processes csv file with microtubule catastrophe times 
     for labeled and unlabeled tubulin and returns tidy dataframe'''
     
@@ -26,3 +26,20 @@ def extract_labeled(df):
     
     unlabeled = df.loc[df['labeled']=='unlabeled']['time to catastrophe (s)']
     return unlabeled
+
+def process_concentration_data(filename):
+    '''Processes csv file with microtubule catastrophe times 
+    for different tubulin concentrations'''
+    
+    df = pd.read_csv(filename, comment='#')
+    df_tidy = pd.melt(df, var_name='concentration (uM)', value_name='catastrophe times (s)')
+    df_tidy['concentration (uM)'] = df_tidy['concentration (uM)'].apply(lambda x: x[:-3])
+    df_tidy = df_tidy.dropna()
+    
+    return df_tidy
+
+def extract_concentration(df, conc):
+    '''Extracts microtubule catastrophe times for specified 
+    tubulin concentration'''
+    
+    return = df.loc[df['concentration (uM)'] == conc]['catastrophe times (s)']

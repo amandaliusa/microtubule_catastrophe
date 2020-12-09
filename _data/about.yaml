@@ -56,7 +56,7 @@ MLEs of Microtubule Catastrophe Model:  >
 fig4: >
     Compared to the Gamma model, which models catastrophe as a $2-3$ step process with the same rate, our custom model models catastrophe as a $2$-step process where each step has a different rate. One of our parameters ($\beta_1$) is smaller than the $\beta$ from the Gamma model, while the other rate is about the same. This is expected because our custom model has fewer steps, so on average each step should take more time and the rate should be slower. 
 
-Model Comparison and Further Analysis:  >
+Model Comparison:  >
     So that still leaves the question: which is the better model?
     For a graphical model assessment, we drew samples from the generative distributions parametrized by the MLEs and created Q-Q plots for both models using the samples.
 
@@ -75,7 +75,25 @@ fig8: >
 fig9: >
 
 fig10: >
-    From our graphical model assessment, it seems clear that the Gamma model is preferred. We then investigate the effect of tubulin concentrations. Using the gamma model, we then obtained parameter estimates for various tubulin concentrations ranging from $7$ to $14 \mu M $and plotted the MLEs and confidence intervals for α and $\beta$ for each concentration:
+    From our graphical model assessment, it seems clear that the Gamma model is preferred. 
+    
+    We also examined the Akaike information criterion, or AIC, for model selection. Given two models, the one with the lesser AIC is likely closer to the true generative distribution. The AIC for a model is given by
+    \begin{align}
+    AIC = 
+    −2l(\theta^{MLE};data)+2p
+    \end{align}
+    
+    where $\theta^{MLE}$ represents the MLEs of the parameters $\theta$ of the model, $l(\theta;data)$ is the log-likelihood of the model, and $p$ is the number of free parameters in the model. The Akaike weight of model $i$ among many models is
+    \begin{align}
+    w_i = 
+    \frac{e^{−(AIC_i−AIC_{max})/2}}{\sum_j e^{−(AIC_j−AIC_{max})/2}}
+    \end{align}
+    
+    Computing the Akaike weights of the two models, we find that $w_{gamma} \approx 1$ and $w_{custom} \approx 0$. Thus, it is clear from both the graphical model assessment and the AIC that the Gamma model is preferred. We use the Gamma model in the remaining analysis.  
+    
+Effects of Tubulin Concentration:  >
+    
+    We then investigate the effect of tubulin concentrations on microtubule catastrophe. Using the Gamma model, we obtained parameter estimates for various tubulin concentrations ranging from $7$ to $14 \mu M $and plotted the MLEs and confidence intervals for α and $\beta$ for each concentration:
 
 fig11: >
 

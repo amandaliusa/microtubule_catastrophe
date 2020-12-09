@@ -111,3 +111,79 @@ def ecdf_vs_theor_cdf(beta1, beta2):
     p.add_layout(legend, 'right')
 
     return p
+
+def qq_plot(df, samples, model_name):
+    '''Generate QQ plot of generative vs observed quantiles for 
+    microtubule catastrophe data
+    
+    Arguments:
+    df: dataframe of experimental measurements
+    samples: samples drawn from generative distribution
+    model_name: string, either 'Gamma' or 'Custom'
+    
+    Website Figures 5 and 6
+    '''
+    p = bebi103.viz.qqplot(
+        data=df,
+        samples=samples,
+        x_axis_label="time to catastrophe (s)",
+        y_axis_label="time to catastrophe (s)",
+        title='Q-Q Plot for {} Model'.format(model_name)
+    )
+
+    return p
+
+def predictive_ecdf(data, samples, model_name, diff=False):
+    '''
+    Generates predictive ECDFs to compare between the generative
+    distribution and measured data.
+    
+    Arguments:
+    data: measured data
+    samples: generative samples
+    model_name: string, either 'Gamma' or 'Custom'
+    diff: whether to compute ECDF differences or not
+    
+    Website Figures 7-10
+    '''
+    
+    if diff:
+        p = bebi103.viz.predictive_ecdf(
+            samples=samples, 
+            data=data, 
+            x_axis_label='time to catastrophe (s)', 
+            title='Predictive ECDFs for {} Model'.format(model_name),
+            diff='ecdf'
+        )
+    else:
+        p = bebi103.viz.predictive_ecdf(
+            samples=samples, 
+            data=data, 
+            x_axis_label='time to catastrophe (s)', 
+            title='Predictive ECDFs for {} Model'.format(model_name)
+        )
+    
+    return p
+
+def plot_conf_ints(estimates, conf_ints, labels):
+    '''
+    Visualization of confidence intervals 
+    
+    Arguments:
+    estimates: MLEs of parameter of interest
+    conf_ints: confidence intervals for MLEs in estimates 
+    labels: labels for each confidence interval to be plotted
+    
+    Website Figures 4, 11, 12
+    '''
+    
+    summaries = [
+        dict(estimate=est, conf_int=conf, label=name)
+        for est, conf, name in zip(
+            estimates, conf_ints, labels
+        )
+    ]
+
+    p = bebi103.viz.confints(summaries)
+
+    return p
