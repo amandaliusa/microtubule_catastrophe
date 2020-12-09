@@ -11,7 +11,7 @@ sidebar: true
 {% if site.data.code %}
 ## Code
 {% for script in site.data.code %}
-* [**{{script.name}}**]({{amandaliusa.github.io/microtubule_catastrophe}}/{{amandaliusa.github.io/microtubule_catastrophe}}/software/{{script.name}})
+* [**{{script.name}}**]({{site.url}}/{{site.baseurl}}/software/{{script.name}})
   \| {{script.desc}}
 {% endfor %}
 {% endif %}
@@ -33,18 +33,18 @@ sidebar: true
 {% for fig in site.data.figures %}
 <article class="post">
 
-<a class="post-thumbnail" style="background-image: ({{amandaliusa.github.io/microtubule_catastrophe}}/{{amandaliusa.github.io/microtubule_catastrophe}}/assets/img/{{fig.pic}})" href="{{amandaliusa.github.io/microtubule_catastrophe}}/figures/{{fig.pdf}}"> </a>
+<a class="post-thumbnail" style="background-image: url({{site.url}}/{{site.baseurl}}/assets/img/{{fig.pic}})" href="{{site.baseurl}}/figures/{{fig.pdf}}"> </a>
 
 <div class="post-content">
-<b class="post-title"><a href="{{}}/{{amandaliusa.github.io/microtubule_catastrophe}}/software/{{fig.filename}}">{{fig.title}}</a></b>
+<b class="post-title"><a href="{{site.url}}/{{site.baseurl}}/software/{{fig.filename}}">{{fig.title}}</a></b>
 <p> {{fig.desc}}</p>
 
 <i>Necessary Data Sets </i><br/>
 {% for ds in fig.req %}
 {% if ds.storage == 'local' %}
-{% assign link = "{{amandaliusa.github.io/microtubule_catastrophe}}/{{amandaliusa.github.io/microtubule_catastrophe}}/datasets/{{ds.link}}" %}
+{% assign link = "{{site.url}}/{{site.baseurl}}/datasets/{{ds.link}}" %}
 {% else %}
-{% assign link = "{{ds.link}}" %}
+{% assign link = {{ds.link}} %}
 {% endif %}
 <a style="font-size: 0.9em;" href="{{link}}"> - {{ds.title}} </a><br/>
 {% endfor %}
