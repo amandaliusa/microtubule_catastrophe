@@ -1,32 +1,34 @@
 - fig:
   title: "Fig. 1: ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals"
-  filename: fig1.py
+  filename: plotting.py
   desc: 
       ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
   pic: 6.1_ecdf_unlabeled_labeled.png
   req:
     - ds: 
       storage: remote
-      title: Time to catastrophe
+      title: Microtubule Catastrophe Times for Labeled and Unlabeled Tubulin
       filetype: ".csv"
       link: https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_time_to_catastrophe_dic_tidy.csv
       filesize: "4.5 KB"
 
 - fig:
   title: "Fig. 2: Analytical CDF vs ECDF for Simulated Times to Catastrophe"
-  filename: fig2.py
+  filename: plotting.py
   desc: 
       Analytical CDF vs ECDF for Simulated Times to Catastrophe
   pic: 6.1_ecdf_model2_vs_data.png
   req:
     - ds: 
-      storage: "local"
-      title: Time to catastrophe
-      link: gardner_time_to_catastrophe_dic_tidy.csv
+      storage: remote
+      title: Microtubule Catastrophe Times for Labeled and Unlabeled Tubulin
+      filetype: ".csv"
+      link: https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_time_to_catastrophe_dic_tidy.csv
+      filesize: "4.5 KB"
       
 - fig:
   title: "Fig. 3: ECDFs for Time to Catastrohpe for Different Beta2/Beta1"
-  filename: fig3.py
+  filename: plotting.py
   desc: 
       ECDFs for Time to Catastrohpe for Different Beta2/Beta1
   pic: 5.2_ecdf_diff_b2_b1_ratios.png
@@ -34,142 +36,126 @@
       
 - fig:
   title: "Fig. 4: Confidence Intervals of Beta Rates for both the Gamma and Custom Model"
-  filename: fig4.py
+  filename: plotting.py
   desc: 
       Confidence Intervals of Beta Rates for both the Gamma and Custom Model
   pic: 8.2_beta_conf_int_comparison.png
   req:
     - ds: 
       storage: remote
-      title: Time to catastrophe
+      title: Microtubule Catastrophe Times for Labeled and Unlabeled Tubulin
       filetype: ".csv"
       link: https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_time_to_catastrophe_dic_tidy.csv
       filesize: "4.5 KB"
       
 - fig:
   title: "Fig. 5: Gamma Model QQ Plot"
-  filename: fig5.py
+  filename: plotting.py
   desc: 
       Gamma Model QQ Plot
   pic: 9.1_gamma_model_QQ_plot.png
   req:
-    - ds:
-      title: Kombucha tempura desconstructed measures
-      storage: local 
-      link: 
     - ds: 
       storage: remote
-      title: Dataset 1
-      link: "http://data.caltech.edu"
+      title:  Microtubule Catastrophe Times for Different Tubulin Concentrations
+      filetype: ".csv"
+      link: https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_mt_catastrophe_only_tubulin.csv
+      filesize: "10.9 KB"
 
 - fig:
   title: "Fig. 6: Custom Model QQ Plot"
-  filename: fig6.py
+  filename: plotting.py
   desc: 
       Custom Model QQ Plot
   pic: 9.1_custom_model_QQ_plot.png
   req:
-    - ds:
-      title: Kombucha tempura desconstructed measures
-      storage: local 
-      link: 
     - ds: 
       storage: remote
-      title: Dataset 1
-      link: "http://data.caltech.edu"
+      title:  Microtubule Catastrophe Times for Different Tubulin Concentrations
+      filetype: ".csv"
+      link: https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_mt_catastrophe_only_tubulin.csv
+      filesize: "10.9 KB"
       
 - fig:
   title: "Fig. 7: Gamma Model Predictive ECDF"
-  filename: fig7.py
+  filename: plotting.py
   desc: 
       ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
   pic: 9.1_custom_model_predictive_ecdf.png
   req:
-    - ds:
-      title: Kombucha tempura desconstructed measures
-      storage: local 
-      link: 
     - ds: 
       storage: remote
-      title: Dataset 1
-      link: "http://data.caltech.edu"
+      title:  Microtubule Catastrophe Times for Different Tubulin Concentrations
+      filetype: ".csv"
+      link: https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_mt_catastrophe_only_tubulin.csv
+      filesize: "10.9 KB"
       
 - fig:
   title: "Fig. 8: Gamma Model Predictive ECDF"
-  filename: fig8.py
+  filename: plotting.py
   desc: 
       ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
   pic: 9.1_gamma_model_predictive_ecdf.png
   req:
-    - ds:
-      title: Kombucha tempura desconstructed measures
-      storage: local 
-      link: 
     - ds: 
       storage: remote
-      title: Dataset 1
-      link: "http://data.caltech.edu"
+      title:  Microtubule Catastrophe Times for Different Tubulin Concentrations
+      filetype: ".csv"
+      link: https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_mt_catastrophe_only_tubulin.csv
+      filesize: "10.9 KB"
       
 - fig:
   title: "Fig. 9: Gamma Model Predictive ECDF Differences"
-  filename: fig9.py
+  filename: plotting.py
   desc: 
       ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
   pic: 9.1_custom_model_predictive_ecdf_diff.png
   req:
-    - ds:
-      title: Kombucha tempura desconstructed measures
-      storage: local 
-      link: 
     - ds: 
       storage: remote
-      title: Dataset 1
-      link: "http://data.caltech.edu"
+      title:  Microtubule Catastrophe Times for Different Tubulin Concentrations
+      filetype: ".csv"
+      link: https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_mt_catastrophe_only_tubulin.csv
+      filesize: "10.9 KB"
       
 - fig:
   title: "Fig. 10: Gamma Model Predictive ECDF"
-  filename: fig10.py
+  filename: plotting.py
   desc: 
       ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
   pic: 9.1_gamma_model_predictive_ecdf_diff.png
   req:
-    - ds:
-      title: Kombucha tempura desconstructed measures
-      storage: local 
-      link: 
     - ds: 
       storage: remote
-      title: Dataset 1
-      link: "http://data.caltech.edu"
+      title:  Microtubule Catastrophe Times for Different Tubulin Concentrations
+      filetype: ".csv"
+      link: https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_mt_catastrophe_only_tubulin.csv
+      filesize: "10.9 KB"
       
 - fig:
   title: "Fig. 11: Gamma Model Alpha Parameter Confidence Intervals"
-  filename: fig11.py
+  filename: plotting.py
   desc: 
       ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
   pic: 9.1_alpha_conf_int.png
   req:
-    - ds:
-      title: Kombucha tempura desconstructed measures
-      storage: local 
-      link: 
     - ds: 
       storage: remote
-      title: Dataset 1
-      link: "http://data.caltech.edu"
+      title:  Microtubule Catastrophe Times for Different Tubulin Concentrations
+      filetype: ".csv"
+      link: https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_mt_catastrophe_only_tubulin.csv
+      filesize: "10.9 KB"
       
 - fig:
   title: "Fig. 12: Gamma Model Beta Parameter Confidence Intervals"
-  filename: fig12.py
+  filename: plotting.py
   desc: 
       ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
   pic: 9.1_beta_conf_int.png
   req:
-    - ds:
-      title: Kombucha tempura desconstructed measures
-      storage: local 
-      link: 
     - ds: 
       storage: remote
-      title: Dataset 1
-      link: "http://data.caltech.edu"
+      title:  Microtubule Catastrophe Times for Different Tubulin Concentrations
+      filetype: ".csv"
+      link: https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_mt_catastrophe_only_tubulin.csv
+      filesize: "10.9 KB"

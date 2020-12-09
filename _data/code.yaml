@@ -1,4 +1,18 @@
 - script:
+  name: preprocessing.py
+  desc: >
+    Functions to preprocessing microtubule catastrophe data.
+- script:
+  name: modeling.py
+  desc: >
+    Functions for modeling microtubule catastrophe data
+- script:
+  name: plotting.py
+  desc: >
+    Functions to plot microtubule catastrophe data
+
+
+- script:
   name: fig1.py
   desc: >
     Calculates and creates ECDF of Times to Catastrophe for Labeled vs 
