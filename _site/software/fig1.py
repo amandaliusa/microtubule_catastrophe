@@ -1,19 +1,23 @@
-import numpy as np
-import pandas as pd
-import scipy.stats
-
 import iqplot
 import bebi103 
 
-import numba
-
 import bokeh.io
 
+from modeling import theor_cdf_custom
+
+bokeh.io.output_notebook()
 bebi103.hv.set_defaults()
 
+"""
+Functions to plot microtubule catastrophe data
+"""
 
-def plot_fig1(df):
-
+def ecdf_labeled_unlabeled(df):
+    '''Generates ECDF plot for times to catastrophe
+    for labeled and unlabeled tubulin
+    
+    Website Figure 1
+    '''
     p = iqplot.ecdf(
         data=df,
         q='time to catastrophe (s)',
@@ -23,4 +27,5 @@ def plot_fig1(df):
         y_axis_label='empirical ecdf',
         title='ECDF of Time to Catastrophe'
     )
-    bokeh.io.show(p)
+    
+    return p

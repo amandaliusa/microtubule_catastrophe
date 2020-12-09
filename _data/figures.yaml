@@ -3,7 +3,7 @@
   filename: plotting.py
   desc: 
       ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
-  pic: 6.1_ecdf_unlabeled_labeled.png
+  pic: fig1.png
   req:
     - ds: 
       storage: remote
@@ -17,7 +17,7 @@
   filename: plotting.py
   desc: 
       Analytical CDF vs ECDF for Simulated Times to Catastrophe
-  pic: 5.2_ecdf_model2_vs_data.png
+  pic: fig2.png
   req:
     - ds: 
       storage: remote
@@ -31,7 +31,7 @@
   filename: plotting.py
   desc: 
       ECDFs for Time to Catastrohpe for Different Beta2/Beta1
-  pic: 5.2_ecdf_diff_b2_b1_ratios.png
+  pic: fig3.png
 
       
 - fig:
@@ -39,7 +39,7 @@
   filename: plotting.py
   desc: 
       Confidence Intervals of Beta Rates for both the Gamma and Custom Model
-  pic: 8.2_beta_conf_int_comparison.png
+  pic: fig4.png
   req:
     - ds: 
       storage: remote
@@ -53,7 +53,7 @@
   filename: plotting.py
   desc: 
       Gamma Model QQ Plot
-  pic: 9.1_gamma_QQ_plot.png
+  pic: fig5.png
   req:
     - ds: 
       storage: remote
@@ -67,7 +67,7 @@
   filename: plotting.py
   desc: 
       QQ Plot for the two successive Poisson processes model
-  pic: 9.1_custom_model_QQ_plot.png
+  pic: fig6.png
   req:
     - ds: 
       storage: remote
@@ -75,27 +75,13 @@
       filetype: ".csv"
       link: https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_mt_catastrophe_only_tubulin.csv
       filesize: "10.9 KB"
-      
+
 - fig:
-  title: "Fig. 7: Custom Model Predictive ECDF"
-  filename: plotting.py
-  desc: 
-      predictive ECDF for the two successive Poisson processes model
-  pic: 9.1_custom_model_predictive_ecdf.png
-  req:
-    - ds: 
-      storage: remote
-      title:  Microtubule Catastrophe Times for Different Tubulin Concentrations
-      filetype: ".csv"
-      link: https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_mt_catastrophe_only_tubulin.csv
-      filesize: "10.9 KB"
-      
-- fig:
-  title: "Fig. 8: Gamma Model Predictive ECDF"
+  title: "Fig. 7: Gamma Model Predictive ECDF"
   filename: plotting.py
   desc: 
       Gamma model predictive ECDF
-  pic: 9.1_gamma_model_predictive_ecdf.png
+  pic: fig7.png
   req:
     - ds: 
       storage: remote
@@ -103,13 +89,13 @@
       filetype: ".csv"
       link: https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_mt_catastrophe_only_tubulin.csv
       filesize: "10.9 KB"
-      
+
 - fig:
-  title: "Fig. 9: Custom Model Predictive ECDF Differences"
+  title: "Fig. 8: Custom Model Predictive ECDF"
   filename: plotting.py
   desc: 
-      Custom Model Predictive ECDF Differences
-  pic: 9.1_custom_model_predictive_ecdf_diff.png
+      predictive ECDF for the two successive Poisson processes model
+  pic: fig8.png
   req:
     - ds: 
       storage: remote
@@ -119,11 +105,25 @@
       filesize: "10.9 KB"
       
 - fig:
-  title: "Fig. 10: Gamma Model Predictive ECDF Differences"
+  title: "Fig. 9: Gamma Model Predictive ECDF Differences"
   filename: plotting.py
   desc: 
       Gamma Model Predictive ECDF Differences
-  pic: 9.1_gamma_model_predictive_ecdf_diff.png
+  pic: fig9.png
+  req:
+    - ds: 
+      storage: remote
+      title:  Microtubule Catastrophe Times for Different Tubulin Concentrations
+      filetype: ".csv"
+      link: https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_mt_catastrophe_only_tubulin.csv
+      filesize: "10.9 KB"
+      
+- fig:
+  title: "Fig. 10: Custom Model Predictive ECDF Differences"
+  filename: plotting.py
+  desc: 
+      Custom Model Predictive ECDF Differences
+  pic: fig10.png
   req:
     - ds: 
       storage: remote
@@ -137,7 +137,7 @@
   filename: plotting.py
   desc: 
      Confidence intervals for the parameter $\alpha$ in the Gamma model for various tubulin concentrations.
-  pic: 9.1_alpha_conf_int.png
+  pic: fig11.png
   req:
     - ds: 
       storage: remote
@@ -151,7 +151,7 @@
   filename: plotting.py
   desc: 
       Confidence intervals for the parameter $\beta$ in the Gamma model for various tubulin concentrations.
-  pic: 9.1_beta_conf_int.png
+  pic: fig12.png
   req:
     - ds: 
       storage: remote
