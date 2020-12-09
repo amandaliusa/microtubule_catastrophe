@@ -8,6 +8,10 @@ import tqdm
 
 import bebi103 
 
+"""
+Functions for modeling microtubule catastrophe data
+"""
+
 def log_like_iid_gamma(params, n):
     """Log likelihood for i.i.d. gamma measurements."""
     alpha, beta = params
