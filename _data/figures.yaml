@@ -1,6 +1,6 @@
 - fig:
   title: "Fig. 1: ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals"
-  filename: script1.py
+  filename: plotting.py
   desc: 
       ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
   pic: 6.1_ecdf_unlabeled_labeled.png
@@ -8,7 +8,7 @@
     - ds: 
       storage: remote
       title: Time to catastrophe
-      link: https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_time_to_catastrophe_dic_tidy.csv
+      link: gardner_time_to_catastrophe_dic_tidy.csv
 
 - fig:
   title: "Fig. 2: Analytical CDF vs ECDF for Simulated Times to Catastrophe"
@@ -17,14 +17,10 @@
       Analytical CDF vs ECDF for Simulated Times to Catastrophe
   pic: 6.1_ecdf_model2_vs_data.png
   req:
-    - ds:
-      title: Kombucha tempura desconstructed measures
-      storage: local 
-      link: 
     - ds: 
       storage: remote
       title: Time to catastrophe
-      link: https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_time_to_catastrophe_dic_tidy.csv
+      link: gardner_time_to_catastrophe_dic_tidy.csv
       
 - fig:
   title: "Fig. 3: ECDFs for Time to Catastrohpe for Different Beta2/Beta1"
