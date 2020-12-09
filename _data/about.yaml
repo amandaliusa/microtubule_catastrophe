@@ -84,7 +84,7 @@ fig9.1a: >
 fig9.1b: >
     We observe that in general, higher tubulin concentration results in a larger $\alpha$ value (more steps in the multi-step process). In particular, there is almost no overlap between the confidence intervals for $7 \mu M$ and $14 \mu M$. This makes sense given that microtubules polymerize faster at higher concentrations. We hypothesize that the larger number of steps for higher tubulin concentration occurs because more tubulin have to come off during catastrophe when there is higher concentration. 
 
-    There does not appear to be a significant difference between the rates $\beta$ as tubulin concentration increases; the confidence intervals for all concentrations overlap a lot. So for higher concentrations, the ratio $\alpha / \beta$ is generally larger, meaning time to catastrophe takes longer. This is also generally what we observed from the ECDFs that we plotted in part (a). 
+    There does not appear to be a significant difference between the rates $\beta$ as tubulin concentration increases; the confidence intervals for all concentrations overlap a lot. So for higher concentrations, the ratio $\alpha / \beta$ is generally larger, meaning time to catastrophe takes longer. 
 
 Summary:  >
     We confirmed that GFP fluorescent tagged microtubule does not significantly impact the rate to catastrophe and thus we can measure microtubule catastrophe with GFP labeling. Then, we compared two models for microtubule distribution and found that time between microtubule catastrophe events can be best modeled as a gamma distribution. In addition, as the concentration of tubulin increases, the number of events between microtubule catastrophes increase as well, though all events still occur at the approximately the same rate. 
