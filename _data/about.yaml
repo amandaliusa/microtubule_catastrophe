@@ -16,24 +16,24 @@ authors: >
 Abstract: >
   Microtubule catastrophe is an important cellular event that allows rapid reorganization of cellular structure. Tubulin monomers that make up microtubules dissociate rapidly in sudden events termed “catastrophe”. These events are crucial for microtubule function. Despite the importance of microtubule catastrophe, the exact mechanism by which catastrophe occurs is not well understood. To gain an understanding of the mechanism, we used data collected from [Garner et. al](https://www.cell.com/cell/fulltext/S0092-8674(11)01287-6?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867411012876%3Fshowall%3Dtrue) to model microtubule catastrophe in two distinct models. The first model is a gamma distribution model that assumes that microtubule catastrophe can be modeled as N poisson processes with the same rate of arrival; whereas our second model assumes microtubule catastrophe can be modeled as 2 successive poisson processes with different rates of arrival. We found that microtubule catastrophe is best modeled as a gamma distribution with rate parameter $$\beta \approx $$ steps / second and increasing step parameter $$\alpha$$ for increasing tubulin concentration. This suggests that at higher tubulin concentrations, more steps of the same rate are required for microtubule catastrophe to occur; that is, microtubule catastrophe takes longer at higher tubulin concentrations. 
 
-Microtubule Catastrophe and ECDFs:  >
+Microtubule Catastrophe in Labeled and Unlabeled Tubulin:  >
     Garner et. al used fluorescent markers to monitor microtubules in order to measure time to catastrophe. As a control to ensure that fluorescent labeling did not affect catastrophe times, they also performed a similar experiment using differential interference contrast (DIC) microscopy. The first dataset we worked with includes measured times to microtubule catastrophe for both labeled and unlabeled tubulin. We first visualized the ECDFs of the data: 
-    
-fig2.2:  >
-    We observe that there is no obvious difference between the ECDFs for labeled and unlabeled tubulin.
-
-Confidence Intervals for Microtubule Catastrophe:  >
 
 fig6.1: >
-    We observe that there is no obvious difference between the ECDFs for labeled and unlabeled tubulin and confirm that the 95% confidence intervals of the times to catastrophe for labeled and unlabeled tubulin overlap.
+    We observe that there is no obvious difference between the ECDFs for labeled and unlabeled tubulin and confirm that the 95% confidence intervals of the times to catastrophe for labeled and unlabeled tubulin overlap. To supplement our graphical analysis, we computed bootstrap confidence intervals of the plug-in estimate for mean time to catastrophe (i.e. the sample mean) for labeled and unlabeled tubulin and found heavy overlap. 
+    
+    Finally, we performed a permutation hypothesis test with the difference of means as our test statistic to test whether the distribution of time to catastrophe is the same for labeled and unlabeled tubulin. If so, then the means of the distributions should be the same. Since the permutation test concatenates and shuffles the data as if the labels are irrelevant, it is a natural choice for testing whether two distributions are the same. We report a p-value of approximately $0.77$; that is, $77\%$ of the permuted samples had at least the difference between means present in the original data set. 
+    
+    Combined, our results suggest that labeling the tubulin does not significantly affect the microtubule dynamics. Thus, in the remaining analysis, we only work with labeled tubulin. 
 
 Simulating Distributions:  >
 
-    We model the catastrophe as two successive Poisson processes, with rates of arrival $\beta_1$ and $\beta_2$ and simulate experiments. Since we have two separate Poisson processes with two different rates and we are sampling the time between events, we want to use an exponential distribution. We then add the drawn times for the two processes together to get the total time to catastrophe, since the processes are assumed to be independent. We will run this calculation for different ratios of $\beta_2/\beta_1$.
-
+    In their paper, Gardner et al. paper assumed that the microtubule catatrophe times are Gamma distributed. That is, we have a multi-step process with the same rate per step. As an alternative model, we assert that two biochemical processes with different rates must occur in succession to trigger catastrophe. We model the two processes as independent Poisson processes with arrivals rates of $\beta_1$ and $\beta_2$, respectively, where $\beta_1 \neq \beta_2$. Then, we simulated the experiment according to this model. 
+    
 fig5.2a: >
     From the resulting plot, we observe that increasing $\beta_2$ decreases time to catastrophe if we hold $\beta_1$ (and consequently the time until the first biochemical process) constant. This makes sense because increasing $\beta_2$ decreases $1/\beta_2$, which is the mean time between the first and second biochemical processes. 
-    The PDF for this scenario is:
+    
+    The PDF for this model, which we will refer to hereafter as the "custom" model, is:
     \begin{align}
     f(t;\beta_1, \beta_2) = \frac{\beta_1 \beta_2}{\beta_2 - \beta_1}\left(\mathrm{e}^{-\beta_1 t} - \mathrm{e}^{-\beta_2 t}\right)
     \end{align}
@@ -45,17 +45,16 @@ fig5.2a: >
     \frac{1}{\beta_1}\left(1-\mathrm{e}^{- \beta_1 t}\right)- \frac{1}{\beta_2}\left(1-\mathrm{e}^{-\beta_2 t}\right)
     \right].
     \end{align}
-    This was overlayed with our simulated ECDF.
+    This was overlayed with our simulated ECDF with $\beta_1 = 1, \beta_2 = 2$.
     
-
 fig5.2b: >
-    It looks like our analytical CDF and simulated ECDF match fairly well. This suggests that the random generation process was successful.
+    It looks like our analytical CDF and simulated ECDF match fairly well. This suggests that the custom model could potentially fit the data well.
 
 MLEs of Microtubule Catastrophe Model:  >
-    We obtained maximum likelihood estimates as well as confidence intervals for $\beta_1$ and $\beta_2$ in the two successive Poisson process model as well as $\alpha$ and $\beta$ for a gamma distribution. We have plotted these values below.   
+    We now have two potential models for microtubule catastrophe. To further analyze them both, we obtained maximum likelihood estimates as well as confidence intervals for $\beta_1$ and $\beta_2$ in the two successive Poisson process (custom) model as well as $\alpha$ and $\beta$ for the Gamma model. We observe that modeling the times to catastrophe as Gamma-distributed means that we find the MLES of the number of steps until catastrophe to be about $\alpha = $2−3 steps 95% of the time, and MLE of the rate to be about $\beta = $0.0045−0.0068 steps per second  95%  of the time. This means time to catastrophe would be about  300−660 seconds, which matches our data fairly well. Similarly, we obtained confidence intervals of the MLEs for $\beta_1$ and $\beta_2$ for the custom model and have plotted these values below to compare rates between the two models.   
 
 fig8.2: >
-    Compared to part (a), which modeled catastrophe as a $2-3$ step process with the same rate, our model in (b) models catastrophe as a $2$-step process where each step has a different rate. One of our parameters ($\beta_1$) is smaller than the $\beta$ from (a), while the other rate is about the same. This makes sense because our model in (b) has fewer steps, so on average each step should take more time and the rate should be slower. 
+    Compared to the Gamma model, which models catastrophe as a $2-3$ step process with the same rate, our custom model models catastrophe as a $2$-step process where each step has a different rate. One of our parameters ($\beta_1$) is smaller than the $\beta$ from the Gamma model, while the other rate is about the same. This is expected because our custom model has fewer steps, so on average each step should take more time and the rate should be slower. 
 
 Model Comparison and Further Analysis:  >
     So that still leaves the question: which is the better model?

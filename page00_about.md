@@ -19,37 +19,30 @@ sidebar: true
 {% if entry[0] != 'title' %}
 {% if entry[0] != 'authors' %}
 
-{% if entry[0] != 'fig2.2' and entry[0] != 'fig5.2a' and entry[0] != 'fig5.2b' and entry[0] != 'fig6.1' and entry[0] != 'fig8.2'
+{% if entry[0] != 'fig5.2a' and entry[0] != 'fig5.2b' and entry[0] != 'fig6.1' and entry[0] != 'fig8.2'
 and entry[0] != 'fig9.1a' and entry[0] != 'fig9.1b' and entry[0] != 'fig9.1c' and entry[0] != 'fig9.1d' and entry[0] != 'fig9.1e'
 and entry[0] != 'fig9.1f' and entry[0] != 'fig9.1g' and entry[0] != 'fig9.1h'%}
 ## {{entry[0]}}
 {% endif %}
 
-{% if entry[0] == 'fig2.2' %}
-<center>
-    <img src="assets/img/2.2_ecdfs.png" width="500" height="400"/>
-    <figcaption> ECDFs of Time to Catastrophe for Labeled vs Unlabeled Tubulin </figcaption>
-</center>
-{% endif %}
-
 {% if entry[0] == 'fig5.2a' %}
 <center>
-    <img src="assets/img/5.2_ecdf_diff_b2_b1_ratios.png" width="500" height="400"/>
-    <figcaption> ECDFs of Time to Catastrophe with Different b2/b1 ratios </figcaption>
+    {% include 5.2a.html %}
+    <figcaption> Figure 2: ECDFs of Time to Catastrophe with Different beta2/beta1 ratios </figcaption>
 </center>
 {% endif %}
 
 {% if entry[0] == 'fig5.2b' %}
 <center>
-    <img src="assets/img/5.2_ecdf_model2_vs_data.png" width="500" height="400"/>
-    <figcaption> Analytical vs Simulated ECDF of Time to Catastrophe </figcaption>
+    {% include 5.2b.html %}
+    <figcaption> Figure 3: Analytical vs Simulated ECDF of Time to Catastrophe </figcaption>
 </center>
 {% endif %}
 
 {% if entry[0] == 'fig6.1' %}
 <center>
-    <img src="assets/img/6.1_ecdf_unlabeled_labeled.png" width="500" height="400"/>
-    <figcaption> ECDF of Time to Catastrophe for Labeled vs Unlabeled Tubulin, with Confidence Intervals </figcaption>
+    {% include 6.1.html %}
+    <figcaption> Figure 1: ECDF of Time to Catastrophe for Labeled vs Unlabeled Tubulin </figcaption>
 </center>
 {% endif %}
 
@@ -62,57 +55,57 @@ and entry[0] != 'fig9.1f' and entry[0] != 'fig9.1g' and entry[0] != 'fig9.1h'%}
 
 {% if entry[0] == 'fig9.1a' %}
 <center>
-    <img src="assets/img/9.1_alpha_conf_int.png" width="500" height="400"/>
-    <figcaption> Confidence Intervals for Alpha at Different Concentrations, Gamma Model </figcaption>
+    {% include 9.1a.html %}
+    <figcaption> Figure 5: Confidence Intervals for Alpha at Different Concentrations, Gamma Model </figcaption>
 </center>
 {% endif %}
 
 {% if entry[0] == 'fig9.1b' %}
 <center>
-    <img src="assets/img/9.1_beta_conf_int.png" alt="Beta Confidence Interval" width="500" height="400"/>
-    <figcaption> Confidence Intervals for Beta at Different Concentrations, Gamma Model </figcaption>
+    {% include 9.1b.html %}
+    <figcaption> Figure 6: Confidence Intervals for Beta at Different Concentrations, Gamma Model </figcaption>
 </center>
 {% endif %}
 
 {% if entry[0] == 'fig9.1c' %}
 <center>
-    <img src="assets/img/9.1_custom_model_predictive_ecdf_diff.png" alt="Custom Model Predictive ECDF Difference" width="500" height="400"/>
-    <figcaption> Predictive ECDF Differences, Custom Model </figcaption>
+    {% include 9.1h.html %}
+    <figcaption> Figure 7: Predictive ECDF Differences, Custom Model </figcaption>
 </center>
 {% endif %}
 
 {% if entry[0] == 'fig9.1d' %}
 <center>
-    <img src="assets/img/9.1_custom_model_predictive_ecdf.png" alt="Custom Model Predictive ECDF" width="500" height="400"/>
-    <figcaption> Predictive ECDFs, Custom Model </figcaption>
+    {% include 9.1g.html %}
+    <figcaption> Figure 8: Predictive ECDFs, Custom Model </figcaption>
 </center>
 {% endif %}
 
 {% if entry[0] == 'fig9.1e' %}
 <center>
-    <img src="assets/img/9.1_custom_model_QQ_plot.png" alt="Custom Model QQ Plot" width="500" height="400"/>
-    <figcaption> QQ Plot, Custom Model </figcaption>
+    {% include 9.1d.html %}
+    <figcaption> Figure 9: QQ Plot, Custom Model </figcaption>
 </center>
 {% endif %}
 
 {% if entry[0] == 'fig9.1f' %}
 <center>
-    <img src="assets/img/9.1_gamma_model_predictive_ecdf_diff.png" alt="Gamma Model Predictive ECDF Difference" width="500" height="400"/>
-    <figcaption> Predictive ECDF Difference, Gamma Model </figcaption>
+    {% include 9.1f.html %}
+    <figcaption> Figure 10: Predictive ECDF Difference, Gamma Model </figcaption>
 </center>
 {% endif %}
 
 {% if entry[0] == 'fig9.1g' %}
 <center>
-    <img src="assets/img/9.1_gamma_model_predictive_ecdf.png" alt="Gamma Model Predictive ECDF" width="500" height="400"/>
-    <figcaption> Predictive ECDFs, Gamma Model </figcaption>
+    {% include 9.1e.html %}
+    <figcaption> Figure 11: Predictive ECDFs, Gamma Model </figcaption>
 </center>
 {% endif %}
 
 {% if entry[0] == 'fig9.1h' %}
 <center>
-    <img src="assets/img/9.1_gamma_QQ_plot.png" alt="Gamma Model QQ Plot" width="500" height="400"/>
-    <figcaption> QQ Plot, Gamma Model </figcaption>
+    {% include 9.1c.html %}
+    <figcaption> Figure 12: QQ Plot, Gamma Model </figcaption>
 </center>
 {% endif %}
 

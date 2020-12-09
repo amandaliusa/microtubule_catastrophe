@@ -1,0 +1,553 @@
+
+
+
+
+<html lang="en">
+
+  <head>
+
+      <meta charset="utf-8">
+      <title>Bokeh Plot</title>
+
+
+
+
+        <style>
+            table.panel-df {
+                    margin-left: auto;
+                    margin-right: auto;
+                    border: none;
+                    border-collapse: collapse;
+                    border-spacing: 0;
+                    color: black;
+                    font-size: 12px;
+                    table-layout: fixed;
+                    width: 100%;
+                }
+
+                .panel-df tr, .panel-df th, .panel-df td {
+                    text-align: right;
+                    vertical-align: middle;
+                    padding: 0.5em 0.5em !important;
+                    line-height: normal;
+                    white-space: normal;
+                    max-width: none;
+                    border: none;
+                }
+
+                .panel-df tbody {
+                    display: table-row-group;
+                    vertical-align: middle;
+                    border-color: inherit;
+                }
+
+                .panel-df tbody tr:nth-child(odd) {
+                    background: #f5f5f5;
+                }
+
+                .panel-df thead {
+                    border-bottom: 1px solid black;
+                    vertical-align: bottom;
+                }
+
+                .panel-df tr:hover {
+                    background: lightblue !important;
+                    cursor: pointer;
+                }
+
+        </style>
+        <style>
+            .json-formatter-row {
+                  font-family: monospace;
+                }
+                .json-formatter-row,
+                .json-formatter-row a,
+                .json-formatter-row a:hover {
+                  color: black;
+                  text-decoration: none;
+                }
+                .json-formatter-row .json-formatter-row {
+                  margin-left: 1rem;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty {
+                  opacity: 0.5;
+                  margin-left: 1rem;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty:after {
+                  display: none;
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-object:after {
+                  content: "No properties";
+                }
+                .json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-array:after {
+                  content: "[]";
+                }
+                .json-formatter-row .json-formatter-string,
+                .json-formatter-row .json-formatter-stringifiable {
+                  color: green;
+                  white-space: pre;
+                  word-wrap: break-word;
+                }
+                .json-formatter-row .json-formatter-number {
+                  color: blue;
+                }
+                .json-formatter-row .json-formatter-boolean {
+                  color: red;
+                }
+                .json-formatter-row .json-formatter-null {
+                  color: #855A00;
+                }
+                .json-formatter-row .json-formatter-undefined {
+                  color: #ca0b69;
+                }
+                .json-formatter-row .json-formatter-function {
+                  color: #FF20ED;
+                }
+                .json-formatter-row .json-formatter-date {
+                  background-color: rgba(0, 0, 0, 0.05);
+                }
+                .json-formatter-row .json-formatter-url {
+                  text-decoration: underline;
+                  color: blue;
+                  cursor: pointer;
+                }
+                .json-formatter-row .json-formatter-bracket {
+                  color: blue;
+                }
+                .json-formatter-row .json-formatter-key {
+                  color: #00008B;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-row .json-formatter-toggler-link {
+                  cursor: pointer;
+                }
+                .json-formatter-row .json-formatter-toggler {
+                  line-height: 1.2rem;
+                  font-size: 0.7rem;
+                  vertical-align: middle;
+                  opacity: 0.6;
+                  cursor: pointer;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-row .json-formatter-toggler:after {
+                  display: inline-block;
+                  transition: transform 100ms ease-in;
+                  content: "\25BA";
+                }
+                .json-formatter-row > a > .json-formatter-preview-text {
+                  opacity: 0;
+                  transition: opacity 0.15s ease-in;
+                  font-style: italic;
+                }
+                .json-formatter-row:hover > a > .json-formatter-preview-text {
+                  opacity: 0.6;
+                }
+                .json-formatter-row.json-formatter-open > .json-formatter-toggler-link .json-formatter-toggler:after {
+                  transform: rotate(90deg);
+                }
+                .json-formatter-row.json-formatter-open > .json-formatter-children:after {
+                  display: inline-block;
+                }
+                .json-formatter-row.json-formatter-open > a > .json-formatter-preview-text {
+                  display: none;
+                }
+                .json-formatter-row.json-formatter-open.json-formatter-empty:after {
+                  display: block;
+                }
+                .json-formatter-dark.json-formatter-row {
+                  font-family: monospace;
+                }
+                .json-formatter-dark.json-formatter-row,
+                .json-formatter-dark.json-formatter-row a,
+                .json-formatter-dark.json-formatter-row a:hover {
+                  color: white;
+                  text-decoration: none;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-row {
+                  margin-left: 1rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty {
+                  opacity: 0.5;
+                  margin-left: 1rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty:after {
+                  display: none;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-object:after {
+                  content: "No properties";
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-children.json-formatter-empty.json-formatter-array:after {
+                  content: "[]";
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-string,
+                .json-formatter-dark.json-formatter-row .json-formatter-stringifiable {
+                  color: #31F031;
+                  white-space: pre;
+                  word-wrap: break-word;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-number {
+                  color: #66C2FF;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-boolean {
+                  color: #EC4242;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-null {
+                  color: #EEC97D;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-undefined {
+                  color: #ef8fbe;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-function {
+                  color: #FD48CB;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-date {
+                  background-color: rgba(255, 255, 255, 0.05);
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-url {
+                  text-decoration: underline;
+                  color: #027BFF;
+                  cursor: pointer;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-bracket {
+                  color: #9494FF;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-key {
+                  color: #23A0DB;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler-link {
+                  cursor: pointer;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler {
+                  line-height: 1.2rem;
+                  font-size: 0.7rem;
+                  vertical-align: middle;
+                  opacity: 0.6;
+                  cursor: pointer;
+                  padding-right: 0.2rem;
+                }
+                .json-formatter-dark.json-formatter-row .json-formatter-toggler:after {
+                  display: inline-block;
+                  transition: transform 100ms ease-in;
+                  content: "\25BA";
+                }
+                .json-formatter-dark.json-formatter-row > a > .json-formatter-preview-text {
+                  opacity: 0;
+                  transition: opacity 0.15s ease-in;
+                  font-style: italic;
+                }
+                .json-formatter-dark.json-formatter-row:hover > a > .json-formatter-preview-text {
+                  opacity: 0.6;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > .json-formatter-toggler-link .json-formatter-toggler:after {
+                  transform: rotate(90deg);
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > .json-formatter-children:after {
+                  display: inline-block;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open > a > .json-formatter-preview-text {
+                  display: none;
+                }
+                .json-formatter-dark.json-formatter-row.json-formatter-open.json-formatter-empty:after {
+                  display: block;
+                }
+
+        </style>
+        <style>
+            .codehilite .hll { background-color: #ffffcc }
+                .codehilite  { background: #f8f8f8; }
+                .codehilite .c { color: #408080; font-style: italic } /* Comment */
+                .codehilite .err { border: 1px solid #FF0000 } /* Error */
+                .codehilite .k { color: #008000; font-weight: bold } /* Keyword */
+                .codehilite .o { color: #666666 } /* Operator */
+                .codehilite .ch { color: #408080; font-style: italic } /* Comment.Hashbang */
+                .codehilite .cm { color: #408080; font-style: italic } /* Comment.Multiline */
+                .codehilite .cp { color: #BC7A00 } /* Comment.Preproc */
+                .codehilite .cpf { color: #408080; font-style: italic } /* Comment.PreprocFile */
+                .codehilite .c1 { color: #408080; font-style: italic } /* Comment.Single */
+                .codehilite .cs { color: #408080; font-style: italic } /* Comment.Special */
+                .codehilite .gd { color: #A00000 } /* Generic.Deleted */
+                .codehilite .ge { font-style: italic } /* Generic.Emph */
+                .codehilite .gr { color: #FF0000 } /* Generic.Error */
+                .codehilite .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+                .codehilite .gi { color: #00A000 } /* Generic.Inserted */
+                .codehilite .go { color: #888888 } /* Generic.Output */
+                .codehilite .gp { color: #000080; font-weight: bold } /* Generic.Prompt */
+                .codehilite .gs { font-weight: bold } /* Generic.Strong */
+                .codehilite .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+                .codehilite .gt { color: #0044DD } /* Generic.Traceback */
+                .codehilite .kc { color: #008000; font-weight: bold } /* Keyword.Constant */
+                .codehilite .kd { color: #008000; font-weight: bold } /* Keyword.Declaration */
+                .codehilite .kn { color: #008000; font-weight: bold } /* Keyword.Namespace */
+                .codehilite .kp { color: #008000 } /* Keyword.Pseudo */
+                .codehilite .kr { color: #008000; font-weight: bold } /* Keyword.Reserved */
+                .codehilite .kt { color: #B00040 } /* Keyword.Type */
+                .codehilite .m { color: #666666 } /* Literal.Number */
+                .codehilite .s { color: #BA2121 } /* Literal.String */
+                .codehilite .na { color: #7D9029 } /* Name.Attribute */
+                .codehilite .nb { color: #008000 } /* Name.Builtin */
+                .codehilite .nc { color: #0000FF; font-weight: bold } /* Name.Class */
+                .codehilite .no { color: #880000 } /* Name.Constant */
+                .codehilite .nd { color: #AA22FF } /* Name.Decorator */
+                .codehilite .ni { color: #999999; font-weight: bold } /* Name.Entity */
+                .codehilite .ne { color: #D2413A; font-weight: bold } /* Name.Exception */
+                .codehilite .nf { color: #0000FF } /* Name.Function */
+                .codehilite .nl { color: #A0A000 } /* Name.Label */
+                .codehilite .nn { color: #0000FF; font-weight: bold } /* Name.Namespace */
+                .codehilite .nt { color: #008000; font-weight: bold } /* Name.Tag */
+                .codehilite .nv { color: #19177C } /* Name.Variable */
+                .codehilite .ow { color: #AA22FF; font-weight: bold } /* Operator.Word */
+                .codehilite .w { color: #bbbbbb } /* Text.Whitespace */
+                .codehilite .mb { color: #666666 } /* Literal.Number.Bin */
+                .codehilite .mf { color: #666666 } /* Literal.Number.Float */
+                .codehilite .mh { color: #666666 } /* Literal.Number.Hex */
+                .codehilite .mi { color: #666666 } /* Literal.Number.Integer */
+                .codehilite .mo { color: #666666 } /* Literal.Number.Oct */
+                .codehilite .sa { color: #BA2121 } /* Literal.String.Affix */
+                .codehilite .sb { color: #BA2121 } /* Literal.String.Backtick */
+                .codehilite .sc { color: #BA2121 } /* Literal.String.Char */
+                .codehilite .dl { color: #BA2121 } /* Literal.String.Delimiter */
+                .codehilite .sd { color: #BA2121; font-style: italic } /* Literal.String.Doc */
+                .codehilite .s2 { color: #BA2121 } /* Literal.String.Double */
+                .codehilite .se { color: #BB6622; font-weight: bold } /* Literal.String.Escape */
+                .codehilite .sh { color: #BA2121 } /* Literal.String.Heredoc */
+                .codehilite .si { color: #BB6688; font-weight: bold } /* Literal.String.Interpol */
+                .codehilite .sx { color: #008000 } /* Literal.String.Other */
+                .codehilite .sr { color: #BB6688 } /* Literal.String.Regex */
+                .codehilite .s1 { color: #BA2121 } /* Literal.String.Single */
+                .codehilite .ss { color: #19177C } /* Literal.String.Symbol */
+                .codehilite .bp { color: #008000 } /* Name.Builtin.Pseudo */
+                .codehilite .fm { color: #0000FF } /* Name.Function.Magic */
+                .codehilite .vc { color: #19177C } /* Name.Variable.Class */
+                .codehilite .vg { color: #19177C } /* Name.Variable.Global */
+                .codehilite .vi { color: #19177C } /* Name.Variable.Instance */
+                .codehilite .vm { color: #19177C } /* Name.Variable.Magic */
+                .codehilite .il { color: #666666 } /* Literal.Number.Integer.Long */
+
+                .markdown h1 { margin-block-start: 0.34em }
+                .markdown h2 { margin-block-start: 0.42em }
+                .markdown h3 { margin-block-start: 0.5em }
+                .markdown h4 { margin-block-start: 0.67em }
+                .markdown h5 { margin-block-start: 0.84em }
+                .markdown h6 { margin-block-start: 1.17em }
+                .markdown ul { padding-inline-start: 2em }
+                .markdown ol { padding-inline-start: 2em }
+                .markdown strong { font-weight: 600 }
+                .markdown a { color: -webkit-link }
+                .markdown a { color: -moz-hyperlinkText }
+
+        </style>
+        <style>
+            .panel-widget-box {
+                	min-height: 20px;
+                	background-color: #f5f5f5;
+                	border: 1px solid #e3e3e3 !important;
+                	border-radius: 4px;
+                	-webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+                	box-shadow: inset 0 1px 1px rgba(0,0,0,.05);
+                	overflow-x: hidden;
+                	overflow-y: hidden;
+                }
+
+                .scrollable {
+                  overflow: scroll;
+                }
+
+                progress {
+                	appearance: none;
+                	-moz-appearance: none;
+                	-webkit-appearance: none;
+
+                	border: none;
+                	height: 20px;
+                	background-color: whiteSmoke;
+                	border-radius: 3px;
+                	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+                	color: royalblue;
+                	position: relative;
+                	margin: 0 0 1.5em;
+                }
+
+                progress[value]::-webkit-progress-bar {
+                	background-color: whiteSmoke;
+                	border-radius: 3px;
+                	box-shadow: 0 2px 3px rgba(0,0,0,.5) inset;
+                }
+
+                progress[value]::-webkit-progress-value {
+                	position: relative;
+
+                	background-size: 35px 20px, 100% 100%, 100% 100%;
+                	border-radius:3px;
+                }
+
+                progress.active:not([value])::before {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress[value]::-moz-progress-bar {
+                	background-size: 35px 20px, 100% 100%, 100% 100%;
+                	border-radius:3px;
+                }
+
+                progress:not([value])::-moz-progress-bar {
+                	border-radius:3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+
+                }
+
+                progress.active:not([value])::-moz-progress-bar {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress.active:not([value])::-webkit-progress-bar {
+                	background-position: 10%;
+                	animation-name: stripes;
+                	animation-duration: 3s;
+                	animation-timing-function: linear;
+                	animation-iteration-count: infinite;
+                }
+
+                progress.primary[value]::-webkit-progress-value { background-color: #007bff; }
+                progress.primary:not([value])::before { background-color: #007bff; }
+                progress.primary:not([value])::-webkit-progress-bar { background-color: #007bff; }
+                progress.primary::-moz-progress-bar { background-color: #007bff; }
+
+                progress.secondary[value]::-webkit-progress-value { background-color: #6c757d; }
+                progress.secondary:not([value])::before { background-color: #6c757d; }
+                progress.secondary:not([value])::-webkit-progress-bar { background-color: #6c757d; }
+                progress.secondary::-moz-progress-bar { background-color: #6c757d; }
+
+                progress.success[value]::-webkit-progress-value { background-color: #28a745; }
+                progress.success:not([value])::before { background-color: #28a745; }
+                progress.success:not([value])::-webkit-progress-bar { background-color: #28a745; }
+                progress.success::-moz-progress-bar { background-color: #28a745; }
+
+                progress.danger[value]::-webkit-progress-value { background-color: #dc3545; }
+                progress.danger:not([value])::before { background-color: #dc3545; }
+                progress.danger:not([value])::-webkit-progress-bar { background-color: #dc3545; }
+                progress.danger::-moz-progress-bar { background-color: #dc3545; }
+
+                progress.warning[value]::-webkit-progress-value { background-color: #ffc107; }
+                progress.warning:not([value])::before { background-color: #ffc107; }
+                progress.warning:not([value])::-webkit-progress-bar { background-color: #ffc107; }
+                progress.warning::-moz-progress-bar { background-color: #ffc107; }
+
+                progress.info[value]::-webkit-progress-value { background-color: #17a2b8; }
+                progress.info:not([value])::before { background-color: #17a2b8; }
+                progress.info:not([value])::-webkit-progress-bar { background-color: #17a2b8; }
+                progress.info::-moz-progress-bar { background-color: #17a2b8; }
+
+                progress.light[value]::-webkit-progress-value { background-color: #f8f9fa; }
+                progress.light:not([value])::before { background-color: #f8f9fa; }
+                progress.light:not([value])::-webkit-progress-bar { background-color: #f8f9fa; }
+                progress.light::-moz-progress-bar { background-color: #f8f9fa; }
+
+                progress.dark[value]::-webkit-progress-value { background-color: #343a40; }
+                progress.dark:not([value])::-webkit-progress-bar { background-color: #343a40; }
+                progress.dark:not([value])::before { background-color: #343a40; }
+                progress.dark::-moz-progress-bar { background-color: #343a40; }
+
+                progress:not([value])::-webkit-progress-bar {
+                	border-radius: 3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+                }
+                progress:not([value])::before {
+                	content:" ";
+                	position:absolute;
+                	height: 20px;
+                	top:0;
+                	left:0;
+                	right:0;
+                	bottom:0;
+                	border-radius: 3px;
+                	background:
+                	linear-gradient(-45deg, transparent 33%, rgba(0, 0, 0, 0.2) 33%, rgba(0, 0, 0, 0.2) 66%, transparent 66%) left/2.5em 1.5em;
+                }
+
+                @keyframes stripes {
+                  from {background-position: 0%}
+                  to {background-position: 100%}
+                }
+
+        </style>
+
+
+
+        <script type="text/javascript" src="https://cdn.bokeh.org/bokeh/release/bokeh-2.2.1.min.js" integrity="sha384-qkRvDQVAIfzsJo40iRBbxt6sttt0hv4lh74DG7OK4MCHv4C5oohXYoHUM5W11uqS" crossorigin="anonymous"></script>
+        <script type="text/javascript">
+            Bokeh.set_log_level("info");
+        </script>
+
+
+
+
+  </head>
+
+
+  <body>
+
+
+
+
+
+
+              <div class="bk-root" id="741bd8b4-92f5-4342-826a-3efa28425211" data-root-id="3488"></div>
+
+
+
+
+
+        <script type="application/json" id="3695">
+          {"54972e96-2c13-445b-9973-00ac9dee8552":{"roots":{"references":[{"attributes":{"source":{"id":"3521"}},"id":"3526","type":"CDSView"},{"attributes":{},"id":"3497","type":"LinearScale"},{"attributes":{"items":[{"id":"3553"},{"id":"3554"}],"location":"center"},"id":"3552","type":"Legend"},{"attributes":{},"id":"3507","type":"PanTool"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"#1f77b3"},"line_alpha":{"value":0.1},"line_color":{"value":"#1f77b3"},"x":{"field":"total time (1/beta1)"},"y":{"field":"__ECDF"}},"id":"3524","type":"Circle"},{"attributes":{"active_drag":"auto","active_inspect":"auto","active_multi":null,"active_scroll":"auto","active_tap":"auto","tools":[{"id":"3507"},{"id":"3508"},{"id":"3509"},{"id":"3510"},{"id":"3511"},{"id":"3512"}]},"id":"3514","type":"Toolbar"},{"attributes":{"label":{"value":"2.0"},"renderers":[{"id":"3525"}]},"id":"3536","type":"LegendItem"},{"attributes":{},"id":"3500","type":"BasicTicker"},{"attributes":{"source":{"id":"3537"}},"id":"3541","type":"CDSView"},{"attributes":{"fill_color":{"value":"blue"},"line_color":{"value":"blue"}},"id":"3548","type":"Circle"},{"attributes":{"bottom_units":"screen","fill_alpha":0.5,"fill_color":"lightgrey","left_units":"screen","level":"overlay","line_alpha":1.0,"line_color":"black","line_dash":[4,4],"line_width":2,"right_units":"screen","top_units":"screen"},"id":"3513","type":"BoxAnnotation"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"red"},"line_alpha":{"value":0.1},"line_color":{"value":"red"}},"id":"3544","type":"Circle"},{"attributes":{"axis_label":"ECDF","formatter":{"id":"3528"},"ticker":{"id":"3504"}},"id":"3503","type":"LinearAxis"},{"attributes":{},"id":"3491","type":"DataRange1d"},{"attributes":{"fill_alpha":{"value":0.1},"fill_color":{"value":"blue"},"line_alpha":{"value":0.1},"line_color":{"value":"blue"}},"id":"3549","type":"Circle"},{"attributes":{"data_source":{"id":"3537"},"glyph":{"id":"3538"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"3539"},"selection_glyph":null,"view":{"id":"3541"}},"id":"3540","type":"GlyphRenderer"},{"attributes":{"overlay":{"id":"3513"}},"id":"3509","type":"BoxZoomTool"},{"attributes":{},"id":"3493","type":"DataRange1d"},{"attributes":{"data":{"__ECDF":{"__ndarray__":"BzptoNMG6j+CThvotIHuP97d3d3d3c0/uB6F61G43j+TXyz5xZLvPzMzMzMzM9M/TxvotIFOez+nDXTaQKftPzfQaQOdNuA/lvxiyS+W7D9PG+i0gU6rP7gehetRuK4/v1jyiyW/2D/QaQOdNtDpP3sUrkfhetQ/MJb8Yskvtj+8u7u7u7vrP97d3d3d3e0/exSuR+F6tD9PG+i0gU6bP7gehetRuM4/hetRuB6F6z8YS36x5BfrPwOdNtBpA70/FK5H4XoU7j/lF0t+seTnP1K4HoXrUdg/v1jyiyW/yD+JiIiIiIjoP+F6FK5H4do/nTbQaQOd5j/Gkl8s+cXCP0REREREROQ/BzptoNMG2j97FK5H4XrEP5qZmZmZmck/Om2g0wY67T9PG+i0gU67PxvotIFOG+g/ZmZmZmZm5j9Z8oslv1jSPya/WPKLJd8/S36x5BdL7j/hehSuR+HqP9pApw102uA/v1jyiyW/6D9+seQXS37RP0jhehSuR+E/exSuR+F6lD+dNtBpA53WPz0K16NwPeo/WfKLJb9Y4j8DnTbQaQPNP6DTBjptoOM/frHkF0t+4T/5xZJfLPnlP7y7u7u7u9s/lvxiyS+W3D8RERERERGxP08b6LSBTus/KVyPwvUozD9qA5020GnjP5NfLPnFks8//WLJL5b84j8AAAAAAADwP1VVVVVVVdU/MJb8Yskv5j8DnTbQaQPdP2As+cWSX+w/dNpApw106j8RERERERHBPwrXo3A9Cuc/MzMzMzMz4z+amZmZmZm5P8P1KFyPwtU/5RdLfrHkpz+PwvUoXI/iP1yPwvUoXO8/DnTaQKcN1D+x5BdLfrHkP7WBThvotOE/jCW/WPKL5T8DnTbQaQPtP8aSXyz5xdI/7+7u7u7u7j+4HoXrUbi+PzCW/GLJL8Y/CtejcD0Kxz/otIFOG+jUP7gehetRuO4/LPnFkl8s6T8RERERERHhP1VVVVVVVcU/d3d3d3d31z9PG+i0gU7bP9QGOm2g0+Y/7FG4HoXr0T9PG+i0gU7LPxEREREREdE/5RdLfrHktz9xPQrXo3DdP5qZmZmZmdk/8oslv1jy6z97FK5H4XrkP6RwPQrXo9A/9ihcj8L16D+rqqqqqqrqP+UXS36x5Mc/H4XrUbge5T902kCnDXTKP0t+seQXS94/N9BpA502wD/Gkl8s+cXiPw502kCnDeQ/7FG4HoXrwT8pXI/C9SjsP3d3d3d3d+c/LPnFkl8s2T8K16NwPQrXP+xRuB6F6+E/KVyPwvUo3D902kCnDXTaP9ejcD0K1+M/ERERERERoT+TXyz5xZLfPzCW/GLJL9Y/IiIiIiIi4j/Gkl8s+cWyP6DTBjptoNM/Jr9Y8osl7z+amZmZmZnpP1K4HoXrUeg/w/UoXI/C5T97FK5H4XqkP0GnDXTaQOc/6LSBThvo5D9jyS+W/GLpP22g0wY6beA/zczMzMzM7D+g0wY6baDDP08b6LSBTos/pHA9Ctej4D9VVVVVVVXlP8kvlvxiye8/3t3d3d3d3T8AAAAAAADgP+UXS36x5Nc/cT0K16Nw7T+uR+F6FK7nPzfQaQOdNtA/","dtype":"float64","order":"little","shape":[150]},"__label":["2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0","2.0"],"beta2/beta1 ratio":{"__ndarray__":"AAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABAAAAAAAAAAEAAAAAAAAAAQAAAAAAAAABA","dtype":"float64","order":"little","shape":[150]},"index":[450,451,452,453,454,455,456,457,458,459,460,461,462,463,464,465,466,467,468,469,470,471,472,473,474,475,476,477,478,479,480,481,482,483,484,485,486,487,488,489,490,491,492,493,494,495,496,497,498,499,500,501,502,503,504,505,506,507,508,509,510,511,512,513,514,515,516,517,518,519,520,521,522,523,524,525,526,527,528,529,530,531,532,533,534,535,536,537,538,539,540,541,542,543,544,545,546,547,548,549,550,551,552,553,554,555,556,557,558,559,560,561,562,563,564,565,566,567,568,569,570,571,572,573,574,575,576,577,578,579,580,581,582,583,584,585,586,587,588,589,590,591,592,593,594,595,596,597,598,599],"total time (1/beta1)":{"__ndarray__":"tnUh/evXAkBwC61nHAYOQGb1EBkg3+o/kvlAKRG09D+2xA1EBTkUQIKHQvoF++4/vm6y+FdkuT8XVKx2h5oJQD5h2wSINfY/Tmnbs0yZBkAglXuGNVrWP3BlFXtm1tY/reYdMLq58T+W/6y1hFICQA6nPsajj+8/lQYkcHRx3z9dwpsP+1YEQMkrnaXb8gpAdDMSDyV+3T+lmE6HhEjNP7Cy8Vv7rOs/KHsw8kZOBECSnvcpgr8DQDS6JTfypuE/k433uBliC0D8ydBl9ugAQLDc3yL6ovE/ZFdeY4+w5z9SG9y2onEBQFQ/IkYfbfI/OmyTiwEdAEB3V08Zco/kP14WfgGVp/s/grD3Dv3+8T8ReIQotLTkPz/lzjOVAug/QvvhyX9dB0C8QWkV1XrhPx/K/H2VLAFAGaow9YDc/z9s8p3llUbuP+ZR3lJ+5/Q/Mk2nFpE0DEA/8t9EuTwDQHiMBVtJ2PY/EWh2cP1xAUBCndTnrwvuP7RIQL+ZCPg/dcHDb7ZdyT85A7UP7jDxPwBXamX/BQNA8Jy/CFSO+T+kftvgmKHqP0oHVhjjwvo/nTR4LwIh+T8gXRoOoHT/PzQ/EIYuz/I/Gb5+fgrU8z/LgUzlGaPYP7fXiq040wNAC1dAIEQ+6j8LCLoVCIP6P4+c4r4KiOw/tEz4ygga+j9mdcGBMAEbQDEfwu/iG/A/zCKqQkKz/z/GQ5MTk+LzP9NoTrN3NQZAtEMu2+UXA0A0V1jwicjiP47PxnXnSABAfNjWZrpu+j/oruIhRqbgP8EETFBlXPA/87fnXR/m0T/HW/3837j5P2PtkPJrmBFAFvLpElNv7z+ubmOoJBP9PwoPoy13Kfk/2Li7OEPy/T8IT4e2jTAHQDe1okcZ2e4/obPqfEN4EECv4Wwwj8bhPzaS8qhnVec/AhZwvnds5z82zt4d0urvP7l+ALTsFxBAp+AZX2zoAUDBeSwhE8j3PyuIkdHL/eQ/0DZT7v5l8T/rYyXAWILyPziroVGtHQBAlJTQRCUx7j8YK0zIAzzqP/m3PZHQ/u0/FQNAYqDI3z/S65sM4AD0P8gYKolt/fE/vsai6GKABUBW1MeP/tH7P/uVQH65T+0/jh/S3tCQAUAAOi3Q2zoDQL7Of7ptmuc/KycQFbDB/T+IMiWWaQzoPyL3Efw/jfQ/Jb29gI3R4T+C82Iv2/H5P2J214hy9/o/pQ6ozoMZ4z/uzXhFuZYFQP2O6cFKawBAEPLnMRDd8T8tmHDjXlLxP0Lhly+4efk/Nexiv7/d8j94gLxcHizyP/pOmwcs7fo/2qNU0oADzj/KMDjlMDz1P5R5qB8ToPA/LsB2PBKD+T82rHzsFl7cP6yVz9HUCe8/ImNs62TMEEABxeE/wlACQDCwO6mWRwFANuQ1WbgM/z+gC419ukjOP4z0LO2HWABAdjznksI1/T/JtcwDrC4CQOBtRoRawvY/oYBDeHMQB0AXY6EAg7LkP/0Tv+fc3b0/FFnYMpTF9j/xBPMCE/L9P78TL/Zz0hlAO5CV+M5p9D+iqU245aD1PwmAMHACd/E/ZM4JhehSCEBrqGldw44AQGIKHrEYrew/","dtype":"float64","order":"little","shape":[150]}},"selected":{"id":"3533"},"selection_policy":{"id":"3532"}},"id":"3521","type":"ColumnDataSource"},{"attributes":{},"id":"3504","type":"BasicTicker"},{"attributes":{"data_source":{"id":"3542"},"glyph":{"id":"3543"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"3544"},"selection_glyph":null,"view":{"id":"3546"}},"id":"3545","type":"GlyphRenderer"},{"attributes":{"line_color":"red","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"3538","type":"Line"},{"attributes":{"data":{},"selected":{"id":"3565"},"selection_policy":{"id":"3564"}},"id":"3542","type":"ColumnDataSource"},{"attributes":{"source":{"id":"3542"}},"id":"3546","type":"CDSView"},{"attributes":{},"id":"3512","type":"HelpTool"},{"attributes":{"data_source":{"id":"3547"},"glyph":{"id":"3548"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"3549"},"selection_glyph":null,"view":{"id":"3551"}},"id":"3550","type":"GlyphRenderer"},{"attributes":{"label":{"value":"ECDF"},"renderers":[{"id":"3550"}]},"id":"3554","type":"LegendItem"},{"attributes":{"fill_color":{"value":"#1f77b3"},"line_color":{"value":"#1f77b3"},"x":{"field":"total time (1/beta1)"},"y":{"field":"__ECDF"}},"id":"3523","type":"Circle"},{"attributes":{"below":[{"id":"3499"}],"center":[{"id":"3502"},{"id":"3506"},{"id":"3535"}],"frame_height":275,"frame_width":375,"left":[{"id":"3503"}],"renderers":[{"id":"3525"},{"id":"3540"},{"id":"3545"},{"id":"3550"}],"right":[{"id":"3552"}],"title":{"id":"3489"},"toolbar":{"id":"3514"},"x_range":{"id":"3491"},"x_scale":{"id":"3495"},"y_range":{"id":"3493"},"y_scale":{"id":"3497"}},"id":"3488","subtype":"Figure","type":"Plot"},{"attributes":{"axis":{"id":"3503"},"dimension":1,"ticker":null},"id":"3506","type":"Grid"},{"attributes":{},"id":"3565","type":"Selection"},{"attributes":{"data":{"x":{"__ndarray__":"AAAAAAAAAABn6aJpvKLBP2fpomm8otE/Gl50nhp02j9n6aJpvKLhP8GjC4RrC+Y/Gl50nhp06j90GN24ydzuP2fpomm8ovE/lEbX9hPX8z/BowuEawv2P+4AQBHDP/g/Gl50nhp0+j9Hu6grcqj8P3QY3bjJ3P4/0boIo5CIAEBn6aJpvKIBQP0XPTDovAJAlEbX9hPXA0AqdXG9P/EEQMGjC4RrCwZAV9KlSpclB0DuAEARwz8IQIQv2tfuWQlAGl50nhp0CkCxjA5lRo4LQEe7qCtyqAxA3ulC8p3CDUB0GN24ydwOQAtHd3/19g9A0boIo5CIEEAc0lWGphURQGfpomm8ohFAsgDwTNIvEkD9Fz0w6LwSQEkvihP+SRNAlEbX9hPXE0DfXSTaKWQUQCp1cb0/8RRAdoy+oFV+FUDBowuEawsWQAy7WGeBmBZAV9KlSpclF0Ci6fItrbIXQO4AQBHDPxhAORiN9NjMGECEL9rX7lkZQM9GJ7sE5xlAGl50nhp0GkBmdcGBMAEbQA==","dtype":"float64","order":"little","shape":[50]},"y":{"__ndarray__":"AAAAAAAAAADgruUZp/aQP/A4n+Jms60/gGNs4e9XvT80G1w0YfrGP5yuwiVRus8/SOzzLvQ/1D/yS2UJ0IHYP16y/cUZjNw/3aGT48go4D9QBBRsy+XhP1EsjJAOfOM/KpaFkRjs5D8diqqRcTfmP302tR5AYOc/ePj1fQJp6D8CpX8wXVTpP1bFuwj5JOo/PtBAmWzd6j9NjmbYLYDrPzwAVqOJD+w/9QjsZp+N7D880GKpX/zsP/wg64aMXe0/e1VtdLuy7T/KZgzMV/3tP9sp4sqlPu4/h7HiwcV37j/tlkJPt6nuP4As6INc1e4/SG2x4nz77j+5z7EuyBzvP7S7vQLZOe8/K3Q2MDdT7z+ibH3lWWnvP6hOEp6pfO8/Hq9f34GN7z/AVczFMpzvPwQD62UCqe8/OhGxBS607z9S2IYx673vPzwx2LBoxu8/XQmRXc/N7z+oKbDhQtTvP3yy1V3i2e8/4mpu+8je7z8a6NpsDuPvP0QJs13H5u8/8wMM1QXq7z/8pXGL2ezvPw==","dtype":"float64","order":"little","shape":[50]}},"selected":{"id":"3563"},"selection_policy":{"id":"3562"}},"id":"3537","type":"ColumnDataSource"},{"attributes":{},"id":"3528","type":"BasicTickFormatter"},{"attributes":{"line_alpha":0.1,"line_color":"red","line_width":2,"x":{"field":"x"},"y":{"field":"y"}},"id":"3539","type":"Line"},{"attributes":{"label":{"value":"analytical CDF"},"renderers":[{"id":"3545"}]},"id":"3553","type":"LegendItem"},{"attributes":{},"id":"3563","type":"Selection"},{"attributes":{"text":"Analytical CDF vs Simulated ECDF for Time to Catastrophe"},"id":"3489","type":"Title"},{"attributes":{"axis":{"id":"3499"},"ticker":null},"id":"3502","type":"Grid"},{"attributes":{"data":{},"selected":{"id":"3567"},"selection_policy":{"id":"3566"}},"id":"3547","type":"ColumnDataSource"},{"attributes":{},"id":"3532","type":"UnionRenderers"},{"attributes":{},"id":"3567","type":"Selection"},{"attributes":{"items":[{"id":"3536"}],"visible":false},"id":"3535","type":"Legend"},{"attributes":{},"id":"3566","type":"UnionRenderers"},{"attributes":{"fill_color":{"value":"red"},"line_color":{"value":"red"}},"id":"3543","type":"Circle"},{"attributes":{"axis_label":"total time (1/beta1)","formatter":{"id":"3530"},"ticker":{"id":"3500"}},"id":"3499","type":"LinearAxis"},{"attributes":{"source":{"id":"3547"}},"id":"3551","type":"CDSView"},{"attributes":{},"id":"3564","type":"UnionRenderers"},{"attributes":{},"id":"3495","type":"LinearScale"},{"attributes":{},"id":"3562","type":"UnionRenderers"},{"attributes":{"data_source":{"id":"3521"},"glyph":{"id":"3523"},"hover_glyph":null,"muted_glyph":null,"nonselection_glyph":{"id":"3524"},"selection_glyph":null,"view":{"id":"3526"}},"id":"3525","type":"GlyphRenderer"},{"attributes":{},"id":"3533","type":"Selection"},{"attributes":{},"id":"3508","type":"WheelZoomTool"},{"attributes":{},"id":"3530","type":"BasicTickFormatter"},{"attributes":{},"id":"3510","type":"SaveTool"},{"attributes":{},"id":"3511","type":"ResetTool"}],"root_ids":["3488"]},"title":"Bokeh Application","version":"2.2.1"}}
+        </script>
+        <script type="text/javascript">
+          (function() {
+            var fn = function() {
+              Bokeh.safely(function() {
+                (function(root) {
+                  function embed_document(root) {
+
+                  var docs_json = document.getElementById('3695').textContent;
+                  var render_items = [{"docid":"54972e96-2c13-445b-9973-00ac9dee8552","root_ids":["3488"],"roots":{"3488":"741bd8b4-92f5-4342-826a-3efa28425211"}}];
+                  root.Bokeh.embed.embed_items(docs_json, render_items);
+
+                  }
+                  if (root.Bokeh !== undefined) {
+                    embed_document(root);
+                  } else {
+                    var attempts = 0;
+                    var timer = setInterval(function(root) {
+                      if (root.Bokeh !== undefined) {
+                        clearInterval(timer);
+                        embed_document(root);
+                      } else {
+                        attempts++;
+                        if (attempts > 100) {
+                          clearInterval(timer);
+                          console.log("Bokeh: ERROR: Unable to run BokehJS code because BokehJS library is missing");
+                        }
+                      }
+                    }, 10, root)
+                  }
+                })(window);
+              });
+            };
+            if (document.readyState != "loading") fn();
+            else document.addEventListener("DOMContentLoaded", fn);
+          })();
+        </script>
+
+  </body>
+
+</html>
