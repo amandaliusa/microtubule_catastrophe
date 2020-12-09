@@ -20,7 +20,7 @@
   pic: 6.1_ecdf_model2_vs_data.png
   req:
     - ds: 
-      storage: remote
+      storage: "local"
       title: Time to catastrophe
       link: gardner_time_to_catastrophe_dic_tidy.csv
       
@@ -30,15 +30,7 @@
   desc: 
       ECDFs for Time to Catastrohpe for Different Beta2/Beta1
   pic: 5.2_ecdf_diff_b2_b1_ratios.png
-  req:
-    - ds:
-      title: Kombucha tempura desconstructed measures
-      storage: local 
-      link: 
-    - ds: 
-      storage: remote
-      title: Dataset 1
-      link: "http://data.caltech.edu"
+
       
 - fig:
   title: "Fig. 4: Confidence Intervals of Beta Rates for both the Gamma and Custom Model"
@@ -47,14 +39,12 @@
       Confidence Intervals of Beta Rates for both the Gamma and Custom Model
   pic: 8.2_beta_conf_int_comparison.png
   req:
-    - ds:
-      title: Kombucha tempura desconstructed measures
-      storage: local 
-      link: 
     - ds: 
       storage: remote
-      title: Dataset 1
-      link: "http://data.caltech.edu"
+      title: Time to catastrophe
+      filetype: ".csv"
+      link: https://s3.amazonaws.com/bebi103.caltech.edu/data/gardner_time_to_catastrophe_dic_tidy.csv
+      filesize: "4.5 KB"
       
 - fig:
   title: "Fig. 5: Gamma Model QQ Plot"
