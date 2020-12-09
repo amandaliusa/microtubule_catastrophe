@@ -17,7 +17,7 @@
   filename: plotting.py
   desc: 
       Analytical CDF vs ECDF for Simulated Times to Catastrophe
-  pic: 6.1_ecdf_model2_vs_data.png
+  pic: 5.2_ecdf_model2_vs_data.png
   req:
     - ds: 
       storage: remote
@@ -53,7 +53,7 @@
   filename: plotting.py
   desc: 
       Gamma Model QQ Plot
-  pic: 9.1_gamma_model_QQ_plot.png
+  pic: 9.1_gamma_QQ_plot.png
   req:
     - ds: 
       storage: remote
@@ -66,7 +66,7 @@
   title: "Fig. 6: Custom Model QQ Plot"
   filename: plotting.py
   desc: 
-      Custom Model QQ Plot
+      QQ Plot for the two successive Poisson processes model
   pic: 9.1_custom_model_QQ_plot.png
   req:
     - ds: 
@@ -77,10 +77,10 @@
       filesize: "10.9 KB"
       
 - fig:
-  title: "Fig. 7: Gamma Model Predictive ECDF"
+  title: "Fig. 7: Custom Model Predictive ECDF"
   filename: plotting.py
   desc: 
-      ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
+      predictive ECDF for the two successive Poisson processes model
   pic: 9.1_custom_model_predictive_ecdf.png
   req:
     - ds: 
@@ -94,7 +94,7 @@
   title: "Fig. 8: Gamma Model Predictive ECDF"
   filename: plotting.py
   desc: 
-      ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
+      Gamma model predictive ECDF
   pic: 9.1_gamma_model_predictive_ecdf.png
   req:
     - ds: 
@@ -105,10 +105,10 @@
       filesize: "10.9 KB"
       
 - fig:
-  title: "Fig. 9: Gamma Model Predictive ECDF Differences"
+  title: "Fig. 9: Custom Model Predictive ECDF Differences"
   filename: plotting.py
   desc: 
-      ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
+      Custom Model Predictive ECDF Differences
   pic: 9.1_custom_model_predictive_ecdf_diff.png
   req:
     - ds: 
@@ -119,10 +119,10 @@
       filesize: "10.9 KB"
       
 - fig:
-  title: "Fig. 10: Gamma Model Predictive ECDF"
+  title: "Fig. 10: Gamma Model Predictive ECDF Differences"
   filename: plotting.py
   desc: 
-      ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
+      Gamma Model Predictive ECDF Differences
   pic: 9.1_gamma_model_predictive_ecdf_diff.png
   req:
     - ds: 
@@ -136,7 +136,7 @@
   title: "Fig. 11: Gamma Model Alpha Parameter Confidence Intervals"
   filename: plotting.py
   desc: 
-      ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
+     Confidence intervals for the parameter $\alpha$ in the Gamma model for various tubulin concentrations.
   pic: 9.1_alpha_conf_int.png
   req:
     - ds: 
@@ -150,7 +150,7 @@
   title: "Fig. 12: Gamma Model Beta Parameter Confidence Intervals"
   filename: plotting.py
   desc: 
-      ECDF of Times to Catastrophe for Labeled vs Unlabeled Tubulin with Confidence Intervals
+      Confidence intervals for the parameter $\beta$ in the Gamma model for various tubulin concentrations.
   pic: 9.1_beta_conf_int.png
   req:
     - ds: 
