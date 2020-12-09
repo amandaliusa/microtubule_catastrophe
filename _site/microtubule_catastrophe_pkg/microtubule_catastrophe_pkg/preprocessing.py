@@ -3,6 +3,10 @@ import pandas as pd
 
 import bebi103 
 
+"""
+Functions to preprocessing microtubule catastrophe data.
+"""
+
 def process_labeled_unlabeled_data(filename):
     '''Processes csv file with microtubule catastrophe times 
     for labeled and unlabeled tubulin and returns tidy dataframe'''

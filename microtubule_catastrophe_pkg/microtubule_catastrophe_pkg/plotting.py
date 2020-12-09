@@ -8,6 +8,10 @@ from modeling import theor_cdf_custom
 bokeh.io.output_notebook()
 bebi103.hv.set_defaults()
 
+"""
+Functions to plot microtubule catastrophe data
+"""
+
 def ecdf_labeled_unlabeled(df):
     '''Generates ECDF plot for times to catastrophe
     for labeled and unlabeled tubulin
