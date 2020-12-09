@@ -29,45 +29,66 @@ fig6.1: >
 
 Simulating Distributions:  >
 
-    [Insert text here]
+    We model the catastrophe as two successive Poisson processes, with rates of arrival $\beta_1$ and $\beta_2$ and simulate experiments. Since we have two separate Poisson processes with two different rates and we are sampling the time between events, we want to use an exponential distribution. We then add the drawn times for the two processes together to get the total time to catastrophe, since the processes are assumed to be independent. We will run this calculation for different ratios of $\beta_2/\beta_1$.
 
 fig5.2a: >
-    [Insert text here]
+    From the resulting plot, we observe that increasing $\beta_2$ decreases time to catastrophe if we hold $\beta_1$ (and consequently the time until the first biochemical process) constant. This makes sense because increasing $\beta_2$ decreases $1/\beta_2$, which is the mean time between the first and second biochemical processes. 
+    The PDF for this scenario is:
+    \begin{align}
+    f(t;\beta_1, \beta_2) = \frac{\beta_1 \beta_2}{\beta_2 - \beta_1}\left(\mathrm{e}^{-\beta_1 t} - \mathrm{e}^{-\beta_2 t}\right)
+    \end{align}
+    
+    The analytical CDF of the time to catastrophe (t) is given as: 
+    \begin{align}
+    F(t; \beta_1, \beta_2) = 
+    \frac{\beta_1 \beta_2}{\beta_2-\beta_1}\left[
+    \frac{1}{\beta_1}\left(1-\mathrm{e}^{- \beta_1 t}\right)- \frac{1}{\beta_2}\left(1-\mathrm{e}^{-\beta_2 t}\right)
+    \right].
+    \end{align}
+    This was overlayed with our simulated ECDF.
+    
+
 fig5.2b: >
-    [Insert text here]
+    It looks like our analytical CDF and simulated ECDF match fairly well. This suggests that the random generation process was successful.
 
 MLEs of Microtubule Catastrophe Model:  >
-    [Insert text here]
+    We obtained maximum likelihood estimates as well as confidence intervals for $\beta_1$ and $\beta_2$ in the two successive Poisson process model as well as $\alpha$ and $\beta$ for a gamma distribution. We have plotted these values below.   
 
 fig8.2: >
-    [Insert text here]
+    Compared to part (a), which modeled catastrophe as a $2-3$ step process with the same rate, our model in (b) models catastrophe as a $2$-step process where each step has a different rate. One of our parameters ($\beta_1$) is smaller than the $\beta$ from (a), while the other rate is about the same. This makes sense because our model in (b) has fewer steps, so on average each step should take more time and the rate should be slower. 
 
 Model Comparison and Further Analysis:  >
-    [Insert text here]
+    So that still leaves the question: which is the better model?
+    For a graphical model assessment, we drew samples from the generative distributions parametrized by the MLEs and created Q-Q plots for both models using the samples.
+
 
 fig9.1h: >
 
 fig9.1e: >
-    [Insert text here]
+    It appears that for the Gamma model, the generative quantiles match the observed quantiles well for low times to catastrophe but deviate from the observed quantiles more for higher times to catastrophe. With our custom model, we see deviations between the observed and generative quantiles at both low and medium values of time to catastrophe.
+    We will also produce predictive ECDFs for both models, which will allow us to see how data generated from the distributions parametrized by our MLEs would look.
     
 fig9.1g: >
 
 fig9.1d: >
-    [Insert text here]
+    We see that for the Gamma model, the ECDF of the data matches the 95% confidence interval of the predictive ECDFs well for lower times to catastrophe. Again, there is some deviation for higher times, but the deviation does not appear severe. We observe that the deviation of the measured vs predictive ECDFs is much more severe for the custom model than the Gamma model. We can confirm these observations by examining the differences between the predictive and measured ECDFs:
 
 fig9.1f: >
 
 fig9.1c: >
-    [Insert text here]
+    From our graphical model assessment, it seems clear that the Gamma model is preferred. We then investigate the effect of tubulin concentrations. Using the gamma model, we then obtained parameter estimates for various tubulin concentrations ranging from $7$ to $14 \mu M $and plotted the MLEs and confidence intervals for α and $\beta$ for each concentration:
 
 fig9.1a: >
     [Insert text here]
 
 fig9.1b: >
-    [Insert text here]
+    We observe that in general, higher tubulin concentration results in a larger $\alpha$ value (more steps in the multi-step process). In particular, there is almost no overlap between the confidence intervals for $7 \mu M$ and $14 \mu M$. This makes sense given that microtubules polymerize faster at higher concentrations. We hypothesize that the larger number of steps for higher tubulin concentration occurs because more tubulin have to come off during catastrophe when there is higher concentration. 
+
+    There does not appear to be a significant difference between the rates $\beta$ as tubulin concentration increases; the confidence intervals for all concentrations overlap a lot. So for higher concentrations, the ratio $\alpha / \beta$ is generally larger, meaning time to catastrophe takes longer. This is also generally what we observed from the ECDFs that we plotted in part (a). 
 
 Summary:  >
-    [Insert text here]
+    We confirmed that GFP fluorescent tagged microtubule does not significantly impact the rate to catastrophe and thus we can measure microtubule catastrophe with GFP labeling. Then, we compared two models for microtubule distribution and found that time between microtubule catastrophe events can be best modeled as a gamma distribution. In addition, as the concentration of tubulin increases, the number of events between microtubule catastrophes increase as well, though all events still occur at the approximately the same rate. 
+
   
 Acknowledgments: > 
   This work was done for BE/Bi103a 2020 at Caltech. We thank [Garner et. al](https://www.cell.com/cell/fulltext/S0092-8674(11)01287-6?_returnURL=https%3A%2F%2Flinkinghub.elsevier.com%2Fretrieve%2Fpii%2FS0092867411012876%3Fshowall%3Dtrue) for their data, [Griffin Chure](https://github.com/gchure/) for this website template, and Justin Bois and the [BE/Bi103a](https://bebi103a.github.io/index.html) staff for making this course possible. 
